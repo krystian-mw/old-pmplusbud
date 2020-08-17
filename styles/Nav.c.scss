@@ -1,0 +1,95 @@
+@import "colors.scss";
+
+$max-menu-height: 150px;
+$animation-duration: 0.5s;
+
+#Nav {
+  background: $oxford-blue;
+
+  > div > div.row {
+    // stretch menu fully
+    margin: 0px -30px;
+  }
+
+  a {
+    color: $orange-web;
+  }
+
+  @media (min-width: 768px) {
+    .logo {
+      margin: auto;
+    }
+
+    .menu {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+
+      a {
+        padding: 40px 20px;
+
+        &:hover {
+          color: $oxford-blue;
+          background: $orange-web;
+        }
+
+        &.active {
+          color: $oxford-blue;
+          background: $orange-web;
+        }
+      }
+    }
+
+    .toggler,
+    .seperator {
+      display: none;
+    }
+  }
+
+  @media (max-width: 768px) {
+    text-align: center;
+
+    .logo {
+      h1 {
+        margin: 1rem;
+      }
+    }
+
+    .toggler {
+      width: 3rem;
+      height: 3rem;
+      background: $orange-web;
+      position: fixed;
+      top: 1rem;
+      right: 1rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-evenly;
+      z-index: 1;
+
+      div {
+        height: 10%;
+        width: 80%;
+        background: $oxford-blue;
+        margin: 0 auto;
+      }
+    }
+
+    &:not(.show) {
+      .menu {
+        display: none;
+      }
+    }
+
+    .menu {
+      display: flex;
+      flex-direction: column;
+      background: $orange-web;
+
+      a {
+        padding: 1rem;
+        color: $oxford-blue;
+      }
+    }
+  }
+}
