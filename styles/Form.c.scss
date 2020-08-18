@@ -12,6 +12,7 @@
     display: flex;
     flex-direction: column;
     align-items: stretch;
+
     input,
     textarea {
       background: $white;
@@ -23,7 +24,7 @@
   }
 
   input:focus {
-      border: none;
+    border: none;
   }
 
   .error {
@@ -80,10 +81,6 @@
     font-weight: 900;
   }
 
-  .form-wrapper .hide-form {
-    display: none;
-  }
-
   .error-message {
     display: flex;
     flex-direction: column;
@@ -103,6 +100,26 @@
 
     .message {
       color: white;
+    }
+  }
+  .form-wrapper,
+  .loader {
+    &.hide-form {
+      display: none;
+    }
+  }
+
+  .success {
+    text-align: center;
+    margin: 0;
+
+    h5 {
+      display: block;
+      margin: 1rem auto;
+      padding: 1.5rem;
+      width: 100%;
+      color: white;
+      background: $success;
     }
   }
 }

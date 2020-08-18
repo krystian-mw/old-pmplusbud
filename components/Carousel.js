@@ -23,8 +23,8 @@ export default function FrontCarousel() {
         swipeable={true}
       >
         {Slides.map((image) => (
-          <div key={image}>
-            <img className="carousel-image" src={image} />
+          <div className="carousel-image" key={image}>
+            <img src={image} />
           </div>
         ))}
       </Carousel>

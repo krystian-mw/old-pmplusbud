@@ -1,22 +1,40 @@
+import App from "next/app";
 import Head from "next/head";
-import Nav from "../components/Nav";
+import Router from "next/router";
 
+import Nav from "../components/Nav";
+import Loader from "../components/Loader";
+
+import 'bootstrap/dist/css/bootstrap.min.css'
 import "../styles/globals.scss";
 
-function MyApp({ Component, pageProps }) {
-  return (
-    <>
-      <Head>
-        <link
-          rel="stylesheet"
-          crossOrigin="anonymous"
-          href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
-        />
-      </Head>
-      <Nav />
-      <Component {...pageProps} />
-    </>
-  );
-}
+export default class MyApp extends App {
+  constructor(props) {
+    super(props);
+    this.state = {
+      loading: false,
+    };
 
-export default MyApp;
+    Router.events.on("routeChangeStart", () => {
+      this.setState({ loading: true });
+    });
+
+    Router.events.on("routeChangeComplete", () => {
+      this.setState({ loading: false });
+    });
+    
+    Router.events.on("routeChangeError", () => {
+      this.setState({ loading: false });
+    });
+  }
+
+  render() {
+    const { Component, pageProps } = this.props;
+    return (
+      <>
+        <Nav />
+        {this.state.loading ? <Loader /> : <Component {...pageProps} />}
+      </>
+    );
+  }
+}

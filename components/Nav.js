@@ -5,10 +5,7 @@ import { useRouter } from "next/router";
 
 import "../styles/Nav.c.scss";
 
-const Menu = [
-  { text: "Strona Główna", url: "/" },
-  { text: "Kontakt", url: "/kontakt" },
-];
+import { Menu, ContainerClass } from "../site.info";
 
 export default function Nav() {
   const [show, setShow] = useState(false);
@@ -21,8 +18,8 @@ export default function Nav() {
   }, []);
 
   return (
-    <div id="Nav" className={`container-fluid ${show ? "show" : ""}`}>
-      <div className="container-fluid container-lg">
+    <div id="Nav" className={show ? "show" : ""}>
+      <div className={ContainerClass}>
         <div className="row">
           <div className="col-12 col-md-6 logo">
             <Link href="/">

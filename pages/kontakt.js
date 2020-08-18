@@ -1,4 +1,8 @@
 import Form from "../components/Form";
+import Map from "../components/Map";
+import ClientOnly from "../components/ClientOnly";
+
+import "../styles/Kontakt.p.scss";
 
 export default function Contact() {
   return (
@@ -9,11 +13,11 @@ export default function Contact() {
         </div>
         <div className="col">
           <div className="row">
-            <div className="col-12 col-lg-6">
-              <h2>Gdzie działamy?</h2>
-            </div>
-            <div className="col">
-              <h3>Na terenie Nowego Sącz i Dalej</h3>
+            <div className="col-12 map">
+              <h1>Działamy na całym Województwie Małopolskim!</h1>
+              <ClientOnly>
+                <Map />
+              </ClientOnly>
             </div>
           </div>
         </div>

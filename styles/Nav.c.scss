@@ -5,11 +5,8 @@ $animation-duration: 0.5s;
 
 #Nav {
   background: $oxford-blue;
-
-  > div > div.row {
-    // stretch menu fully
-    margin: 0px -30px;
-  }
+  position: sticky;
+  top: 0;
 
   a {
     color: $orange-web;
@@ -27,12 +24,9 @@ $animation-duration: 0.5s;
 
       a {
         padding: 40px 20px;
+        flex-basis: unset;
 
-        &:hover {
-          color: $oxford-blue;
-          background: $orange-web;
-        }
-
+        &:hover,
         &.active {
           color: $oxford-blue;
           background: $orange-web;

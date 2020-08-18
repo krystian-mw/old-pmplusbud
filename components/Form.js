@@ -1,13 +1,12 @@
 import { Component, createRef } from "react";
 
+import Loader from "./Loader";
+
 import axios from "axios";
 
 import "../styles/Form.c.scss";
 
-const validators = {
-  Name: /^[a-zA-Z]+[\s|-]?[a-zA-Z]+[\s|-]?[a-zA-Z]+$/,
-  Email: /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
-};
+import { Validators } from "../site.info";
 
 const formatBytes = (bytes, decimals) => {
   // Source: SO Community
@@ -31,8 +30,11 @@ export default class Form extends Component {
       validateEmail: true,
       validatePhone: true,
       validateMessage: true,
+      loaderVisible: false,
       formVisible: true,
       errorMessage: false,
+      errorMessageText: false,
+      success: false,
     };
 
     this.files = [];
@@ -46,19 +48,54 @@ export default class Form extends Component {
 
   updateField = (e) => {
     this.validateOnInput(e);
-    this.setState({ [`field${e.target.name}`]: e.target.value });
+    this.setState({
+      [`field${e.target.name}`]: e.target.value,
+      errorMessage: false,
+    });
   };
 
-  Submit = () => {
-    this.toSend.append("name", this.state.fieldName);
-    this.toSend.append("email", this.state.fieldEmail);
-    this.toSend.append("phone", this.state.fieldPhone);
-    this.toSend.append("message", this.state.fieldMessage);
-    axios.post("/api/kontakt", this.toSend).then();
+  preSubmit = () => {
+    this.setState({ loaderVisible: true, formVisible: false });
+  };
+
+  Submit = async () => {
+    this.preSubmit();
+    try {
+      if (
+        !this.state.validateName ||
+        !this.state.validateEmail ||
+        !this.state.validatePhone ||
+        !this.state.validateMessage
+      ) {
+        throw "Sprawdż pola";
+      }
+
+      this.toSend.append("name", this.state.fieldName);
+      this.toSend.append("email", this.state.fieldEmail);
+      this.toSend.append("phone", this.state.fieldPhone);
+      this.toSend.append("message", this.state.fieldMessage);
+
+      const { data } = await axios.post("/api/kontakt", this.toSend);
+
+      if (!data.success) throw "Nie mogliśmy otrzymać twojej wiadomości";
+
+      this.setState({
+        success: true,
+        loaderVisible: false,
+        formVisible: false,
+      });
+    } catch (e) {
+      this.setState({
+        errorMessage: true,
+        errorMessageText: e,
+        formVisible: true,
+        loaderVisible: false,
+      });
+    }
   };
 
   validateOnInput = (e) => {
-    const match = e.target.value.search(validators[e.target.name]);
+    const match = e.target.value.search(Validators[e.target.name]);
     const invalid = match > -1 ? false : true;
     this.setState({ [`validate${e.target.name}`]: match > -1 });
   };
@@ -87,21 +124,27 @@ export default class Form extends Component {
   render() {
     return (
       <div id="Form">
-        {/* <div
-          className={`loader ${this.state.formVisible ? "visible" : ""}`}
-        ></div> */}
         <div className="row header">
           <h1>Skontaktuj się z nami!</h1>
         </div>
+        {this.state.loaderVisible ? <Loader /> : null}
         {this.state.errorMessage ? (
-          <div class="error-message">
-            <div class="e-mark">!</div>
-            <div class="message">Coś poszło nie tak!</div>
+          <div className="error-message">
+            <div className="e-mark">!</div>
+            <div className="message">Coś poszło nie tak!</div>
+            {this.state.errorMessageText ? (
+              <div className="message">{this.state.errorMessageText}</div>
+            ) : null}
+          </div>
+        ) : null}
+        {this.state.success ? (
+          <div className="row success">
+            <h5>Dziękujemy! Wkrótce się odezwiemy.</h5>
           </div>
         ) : null}
         <div
           className={`form-wrapper ${
-            !this.state.formVisible ? "hideForm" : ""
+            this.state.formVisible ? "" : "hide-form"
           }`}
         >
           <div className="row form">
@@ -110,7 +153,7 @@ export default class Form extends Component {
               placeholder="Imię i Nazwisko"
               onChange={this.updateField}
               value={this.state["fieldName"]}
-              className={!this.state['validateName'] ? 'input-error' : ''}
+              className={!this.state["validateName"] ? "input-error" : ""}
             />
             {this.state["validateName"] ? null : (
               <p className="error">Nieprawidłowe Imię</p>
@@ -120,7 +163,7 @@ export default class Form extends Component {
               placeholder="Adres mailowy"
               onChange={this.updateField}
               value={this.state["fieldEmail"]}
-              className={!this.state['validateEmail'] ? 'input-error' : ''}
+              className={!this.state["validateEmail"] ? "input-error" : ""}
             />
             {this.state["validateEmail"] ? null : (
               <p className="error">Nieprawidłowy Email</p>
@@ -139,7 +182,9 @@ export default class Form extends Component {
             />
           </div>
           <div className="row buttons">
-            <button onClick={() => this.filesRef.current.click()}>Załącz Plik</button>
+            <button onClick={() => this.filesRef.current.click()}>
+              Załącz Plik
+            </button>
             <button onClick={this.Submit}>Wyślij</button>
           </div>
           <div className="row files">

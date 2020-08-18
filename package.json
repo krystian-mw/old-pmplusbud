@@ -8,15 +8,19 @@
     "start": "next start"
   },
   "dependencies": {
+    "@react-spring/parallax": "9.0.0-canary.808.8.4a87fcb",
     "@sendgrid/mail": "^6",
     "@zeit/next-css": "^1.0.1",
     "@zeit/next-sass": "^1.0.1",
     "axios": "^0.19.2",
+    "bootstrap": "^4.5.0",
     "formidable": "^1.2.2",
     "next": "9.5.2",
+    "next-transpile-modules": "^4.1.0",
     "node-sass": "^4.14.1",
     "react": "16.13.1",
     "react-dom": "16.13.1",
-    "react-responsive-carousel": "^3.2.9"
+    "react-responsive-carousel": "^3.2.9",
+    "rellax": "^1.12.1"
   }
 }
