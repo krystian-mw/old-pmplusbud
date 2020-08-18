@@ -9,26 +9,40 @@ import { Menu, ContainerClass } from "../site.info";
 
 export default function Nav() {
   const [show, setShow] = useState(false);
+  // prevent the middleBar of the toggler animating after first page load
+  const [middleBar, setMiddleBar] = useState(false);
   const router = useRouter();
 
   useEffect(() => {
     router.events.on("routeChangeStart", () => {
       setShow(false);
+      toggleOverflowHidden(true);
     });
   }, []);
+
+  const toggleOverflowHidden = (show) => {
+    // hackish but works rather than passing refs
+    document.body.style.overflow = !show ? "hidden" : "unset";
+  };
+
+  const toggler = () => {
+    setShow(!show);
+    setMiddleBar(true);
+    toggleOverflowHidden(show);
+  };
 
   return (
     <div id="Nav" className={show ? "show" : ""}>
       <div className={ContainerClass}>
         <div className="row">
-          <div className="col-12 col-md-6 logo">
+          <div className="col logo">
             <Link href="/">
               <a>
                 <h1>PM+BUD</h1>
               </a>
             </Link>
           </div>
-          <div className="col menu">
+          <div className="col-12 col-md-6 menu">
             {Menu.map((item) => (
               <Link key={item.text} href={item.url}>
                 <a className={router.pathname === item.url ? "active" : ""}>
@@ -38,7 +52,10 @@ export default function Nav() {
             ))}
           </div>
         </div>
-        <div onClick={() => setShow(!show)} className="toggler">
+        <div
+          onClick={toggler}
+          className={`toggler ${middleBar ? "loaded" : ""}`}
+        >
           <div />
           <div />
           <div />

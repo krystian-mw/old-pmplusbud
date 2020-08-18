@@ -1,12 +1,10 @@
 import { ContainerClass } from "../site.info";
 import "../styles/Oferta.p.scss";
 
-import {Parallax, ParallaxLayer} from 'react-spring/renderprops-addons'
-
 export default function Offer() {
   return (
     <div id="Oferta" className={ContainerClass}>
-      {/* <div className="row title">
+      <div className="row title">
         <h1>Oferta</h1>
         <p>Tutaj bedzie opis poniewaz SEO jest bardzo wazne oraz preview</p>
       </div>
@@ -26,7 +24,7 @@ export default function Offer() {
       </div>
       <div className="row">
         <div className="parallax image-3" />
-      </div> */}
+      </div>
     </div>
   );
 }

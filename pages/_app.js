@@ -5,12 +5,13 @@ import Router from "next/router";
 import Nav from "../components/Nav";
 import Loader from "../components/Loader";
 
-import 'bootstrap/dist/css/bootstrap.min.css'
+import "../styles/bootstrap.scss";
 import "../styles/globals.scss";
 
 export default class MyApp extends App {
   constructor(props) {
     super(props);
+
     this.state = {
       loading: false,
     };
@@ -22,7 +23,7 @@ export default class MyApp extends App {
     Router.events.on("routeChangeComplete", () => {
       this.setState({ loading: false });
     });
-    
+
     Router.events.on("routeChangeError", () => {
       this.setState({ loading: false });
     });
@@ -32,7 +33,15 @@ export default class MyApp extends App {
     const { Component, pageProps } = this.props;
     return (
       <>
+        <Head>
+          <meta
+            name="viewport"
+            content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+          />
+        </Head>
+
         <Nav />
+
         {this.state.loading ? <Loader /> : <Component {...pageProps} />}
       </>
     );

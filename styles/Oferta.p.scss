@@ -1,37 +1,43 @@
-#Oferta {
-  ::-webkit-scrollbar {
-    width: 20px;
-  }
-  .title,
-  .article {
-    margin: auto;
-    display: flex;
-    flex-direction: column;
-    text-align: center !important;
+@import "colors.scss";
 
-    h1,
-    p {
-      margin: 0;
-      padding: 1rem;
+#Oferta {
+  &.dark {
+    article {
+      background: $orange-web;
     }
   }
 
-  img {
-    height: 75%;
-    object-fit: cover;
-    display: flex;
-    margin: auto;
+  &.light {
+    article {
+      background: unset;
+    }
+  }
+  
+  section {
+    article {
+      margin: auto;
+      display: flex;
+      flex-direction: column;
+      text-align: center !important;
+
+      h1,
+      p {
+        margin: 0;
+        padding: 1rem;
+        color: $oxford-blue;
+      }
+    }
+
+    img {
+      width: 100%;
+      height: 400px;
+      object-fit: cover;
+    }
   }
 
-  //   .image-1 {
-  //     background-image: url("/images/Experienced-Polish-builder-in-London-2048x1365.jpg");
-  //   }
-
-  //   .image-2 {
-  //     background-image: url("https://static.kb.pl/static/site_media/uploads/media_image/original/wpis/999/budowa-domu.jpg");
-  //   }
-
-  //   .image-3 {
-  //     background-image: url("https://www.build-review.com/wp-content/uploads/2019/12/Home-Renovation.jpg");
-  //   }
+  button {
+    padding: 1rem;
+    background: orange;
+    color: black;
+  }
 }

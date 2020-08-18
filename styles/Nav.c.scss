@@ -5,8 +5,9 @@ $animation-duration: 0.5s;
 
 #Nav {
   background: $oxford-blue;
-  position: sticky;
-  top: 0;
+  position: relative;
+  z-index: 50;
+  white-space: nowrap;
 
   a {
     color: $orange-web;
@@ -15,6 +16,7 @@ $animation-duration: 0.5s;
   @media (min-width: 768px) {
     .logo {
       margin: auto;
+      text-align: center;
     }
 
     .menu {
@@ -43,6 +45,12 @@ $animation-duration: 0.5s;
   @media (max-width: 768px) {
     text-align: center;
 
+    &:not(.show) {
+      .menu {
+        display: none;
+      }
+    }
+
     .logo {
       h1 {
         margin: 1rem;
@@ -53,13 +61,13 @@ $animation-duration: 0.5s;
       width: 3rem;
       height: 3rem;
       background: $orange-web;
-      position: fixed;
+      position: absolute;
       top: 1rem;
       right: 1rem;
       display: flex;
       flex-direction: column;
       justify-content: space-evenly;
-      z-index: 1;
+      z-index: 52;
 
       div {
         height: 10%;
@@ -69,21 +77,70 @@ $animation-duration: 0.5s;
       }
     }
 
-    &:not(.show) {
-      .menu {
-        display: none;
-      }
-    }
-
     .menu {
+      // fullscreen
+      position: fixed;
+      z-index: 51;
+      height: 100vh;
+
+      // ordering
       display: flex;
       flex-direction: column;
+      justify-content: center;
       background: $orange-web;
 
       a {
         padding: 1rem;
         color: $oxford-blue;
+
+        // give nice dividers
+        border-bottom: 1px solid $oxford-blue;
+        &:nth-last-child(1) {
+            border-bottom:  none;
+        }
       }
+    }
+
+    // toggler animation
+    &.show {
+      .toggler {
+          position: fixed;
+        transform: scale(1.5);
+        div {
+          transition: all 0.5s;
+          &:nth-child(2) {
+            display: none;
+          }
+
+          &:nth-child(1) {
+            transform: rotate(-135deg) translateY(-12px);
+          }
+          &:nth-child(3) {
+            transform: rotate(135deg) translateY(12px);
+          }
+        }
+      }
+    }
+
+    &:not(.show) {
+      .toggler {
+        div {
+          transition: all 0.5s;
+        }
+
+        &.loaded {
+          div:nth-child(2) {
+            animation: disguiseSpinner .6s;
+          }
+        }
+      }
+    }
+  }
+
+  @keyframes disguiseSpinner {
+    from {
+      transform: rotate(-180deg) scale(1.5);
+      opacity: 0;
     }
   }
 }
