@@ -6,7 +6,7 @@ import axios from "axios";
 
 import "../styles/Form.c.scss";
 
-import { Validators } from "../site.info";
+import { Validators } from "../site.config";
 
 const formatBytes = (bytes, decimals) => {
   // Source: SO Community

@@ -2,7 +2,13 @@ import formidable from "formidable";
 import { readFileSync } from "fs";
 import sgMail from "@sendgrid/mail";
 
-sgMail.setApiKey(process.env.SENDGRID_API_KEY);
+import {
+  SENDGRID_API_KEY,
+  EMAIL_ADDRESS,
+  TEMPLATE_ID,
+} from "../../site.config";
+
+sgMail.setApiKey(SENDGRID_API_KEY);
 
 export default async (req, res) => {
   res.setHeader("Content-Type", "application/json");
@@ -18,10 +24,10 @@ export default async (req, res) => {
     const { name, email, number, message } = data.fields;
 
     let msg = {
-      to: process.env.EMAIL_ADDRESS,
+      to: EMAIL_ADDRESS,
       from: "kontakt@pmplusbud.pl",
       replyTo: email,
-      templateId: process.env.TEMPLATE_ID,
+      templateId: TEMPLATE_ID,
       dynamicTemplateData: {
         name,
         email,

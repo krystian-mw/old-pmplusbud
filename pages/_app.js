@@ -33,15 +33,7 @@ export default class MyApp extends App {
     const { Component, pageProps } = this.props;
     return (
       <>
-        <Head>
-          <meta
-            name="viewport"
-            content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
-          />
-        </Head>
-
         <Nav />
-
         {this.state.loading ? <Loader /> : <Component {...pageProps} />}
       </>
     );

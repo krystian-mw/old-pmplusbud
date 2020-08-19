@@ -5,13 +5,16 @@ import { useRouter } from "next/router";
 
 import "../styles/Nav.c.scss";
 
-import { Menu, ContainerClass, Breakpoint } from "../site.info";
+import { Menu, ContainerClass, Breakpoint } from "../site.config";
 
 export default function Nav() {
   const [show, setShow] = useState(false);
-  // prevent the middleBar of the toggler animating after first page load
-  const [middleBar, setMiddleBar] = useState(false);
   const router = useRouter();
+
+  // prevent the middle bar of the toggler animating after first page load
+  // prevent menuFlash after first page load
+  const [notFirstPage, setNotFirstPage] = useState(false);
+
 
   useEffect(() => {
     router.events.on("routeChangeStart", () => {
@@ -27,12 +30,12 @@ export default function Nav() {
 
   const toggler = () => {
     setShow(!show);
-    setMiddleBar(true);
+    setNotFirstPage(true);
     toggleOverflowHidden(show);
   };
 
   return (
-    <div id="Nav" className={show ? "show" : ""}>
+    <div id="Nav" className={`${show ? "show" : ""} ${notFirstPage ? "not-first-page" : ""}`}>
       <div className={ContainerClass}>
         <div className="row">
           <div className="col logo">
@@ -54,7 +57,7 @@ export default function Nav() {
         </div>
         <div
           onClick={toggler}
-          className={`toggler ${middleBar ? "loaded" : ""}`}
+          className={`toggler ${notFirstPage ? "not-first-page" : ""}`}
         >
           <div />
           <div />

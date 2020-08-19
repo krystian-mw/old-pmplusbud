@@ -1,4 +1,4 @@
-import { ContainerClass } from "../site.info";
+import { ContainerClass } from "../site.config";
 import "../styles/Oferta.p.scss";
 
 import { Component } from "react";

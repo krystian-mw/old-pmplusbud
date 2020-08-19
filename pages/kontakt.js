@@ -4,9 +4,11 @@ import ClientOnly from "../components/ClientOnly";
 
 import "../styles/Kontakt.p.scss";
 
+import { ContainerClass } from "../site.config";
+
 export default function Contact() {
   return (
-    <div id="Kontakt" className="container">
+    <div id="Kontakt" className={ContainerClass}>
       <div className="row">
         <div className="col-12 col-lg-6">
           <Form />
