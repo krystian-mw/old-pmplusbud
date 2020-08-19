@@ -5,7 +5,7 @@ import { useRouter } from "next/router";
 
 import "../styles/Nav.c.scss";
 
-import { Menu, ContainerClass } from "../site.info";
+import { Menu, ContainerClass, Breakpoint } from "../site.info";
 
 export default function Nav() {
   const [show, setShow] = useState(false);
@@ -42,7 +42,7 @@ export default function Nav() {
               </a>
             </Link>
           </div>
-          <div className="col-12 col-md-6 menu">
+          <div className={`col-12 col-${Breakpoint}-8 menu`}>
             {Menu.map((item) => (
               <Link key={item.text} href={item.url}>
                 <a className={router.pathname === item.url ? "active" : ""}>

@@ -1,7 +1,5 @@
 @import "colors.scss";
-
-$max-menu-height: 150px;
-$animation-duration: 0.5s;
+@import "breakpoint.scss";
 
 #Nav {
   background: $oxford-blue;
@@ -13,7 +11,7 @@ $animation-duration: 0.5s;
     color: $orange-web;
   }
 
-  @media (min-width: 768px) {
+  @media (min-width: $breakpoint) {
     .logo {
       margin: auto;
       text-align: center;
@@ -42,12 +40,12 @@ $animation-duration: 0.5s;
     }
   }
 
-  @media (max-width: 768px) {
+  @media (max-width: $breakpoint) {
     text-align: center;
 
     &:not(.show) {
       .menu {
-        display: none;
+        animation: disappear 0.5s ease-in forwards;
       }
     }
 
@@ -82,6 +80,7 @@ $animation-duration: 0.5s;
       position: fixed;
       z-index: 51;
       height: 100vh;
+      animation: appear 0.5s ease-out forwards;
 
       // ordering
       display: flex;
@@ -96,7 +95,7 @@ $animation-duration: 0.5s;
         // give nice dividers
         border-bottom: 1px solid $oxford-blue;
         &:nth-last-child(1) {
-            border-bottom:  none;
+          border-bottom: none;
         }
       }
     }
@@ -104,7 +103,7 @@ $animation-duration: 0.5s;
     // toggler animation
     &.show {
       .toggler {
-          position: fixed;
+        position: fixed;
         transform: scale(1.5);
         div {
           transition: all 0.5s;
@@ -130,17 +129,36 @@ $animation-duration: 0.5s;
 
         &.loaded {
           div:nth-child(2) {
-            animation: disguiseSpinner .6s;
+            animation: disguiseSpinner 0.6s;
           }
         }
       }
     }
   }
+}
 
-  @keyframes disguiseSpinner {
-    from {
-      transform: rotate(-180deg) scale(1.5);
-      opacity: 0;
-    }
+@keyframes disguiseSpinner {
+  from {
+    transform: rotate(-180deg) scale(1.5);
+    opacity: 0;
+  }
+}
+
+@keyframes disappear {
+  from {
+    top: 0vh;
+  }
+  to {
+    top: -100vh;
+  }
+}
+
+@keyframes appear {
+  from {
+    top: -100vh;
+  }
+
+  to {
+    top: 0vh;
   }
 }
