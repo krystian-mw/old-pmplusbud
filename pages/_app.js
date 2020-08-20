@@ -33,6 +33,15 @@ export default class MyApp extends App {
     const { Component, pageProps } = this.props;
     return (
       <>
+        <Head>
+          <meta
+            name="viewport"
+            content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+          />
+          <link rel="icon" href="/favicon.ico" />
+          <link rel="manifest" href="/manifest.json" />
+          <script src="/pwabuilder-sw-register.js" type="module" async />
+        </Head>
         <Nav />
         {this.state.loading ? <Loader /> : <Component {...pageProps} />}
       </>

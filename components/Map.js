@@ -19,13 +19,7 @@ export default function Map() {
 
   return (
     <>
-      {loading ? (
-        <Loader
-          style={{
-            margin: "auto",
-          }}
-        />
-      ) : null}
+      {loading ? <Loader /> : null}
       <iframe
         ref={iframeRef}
         width="100%"

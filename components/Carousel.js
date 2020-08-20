@@ -1,7 +1,7 @@
 import { Carousel } from "react-responsive-carousel";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 
-import "../styles/Carousel.c.scss";
+import "../styles/components/Carousel.scss";
 
 const Slides = [
   "/images/professional-house-renovation.jpg",
@@ -31,3 +31,4 @@ export default function FrontCarousel() {
     </div>
   );
 }
+1843023229

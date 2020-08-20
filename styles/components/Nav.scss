@@ -1,5 +1,5 @@
-@import "colors.scss";
-@import "breakpoint.scss";
+@import "../colors.scss";
+@import "../breakpoint.scss";
 
 #Nav {
   background: $oxford-blue;
@@ -43,16 +43,6 @@
   @media (max-width: $breakpoint) {
     text-align: center;
 
-    &:not(.show) {
-      &.not-first-page .menu {
-        animation: disappear 0.5s ease-in forwards;
-      }
-
-      &:not(.not-first-page) .menu {
-        display: none;
-      }
-    }
-
     .logo {
       h1 {
         margin: 1rem;
@@ -79,12 +69,26 @@
       }
     }
 
+    // animation
+    &:not(.show) {
+      // prevent menu flash on page load
+      &:not(.not-first-page) .menu {
+        display: none;
+      }
+
+      &.not-first-page .menu {
+        animation: easeOutBounceOut 1.5s linear forwards;
+      }
+    }
+
     .menu {
+      // animation
+      animation: appear 0.5s linear forwards;
+
       // fullscreen
       position: fixed;
       z-index: 51;
       height: 100vh;
-      animation: appear 0.5s ease-out forwards;
 
       // ordering
       display: flex;
@@ -108,7 +112,6 @@
     &.show {
       .toggler {
         position: fixed;
-        transform: scale(1.5);
         div {
           transition: all 0.5s;
           &:nth-child(2) {
@@ -148,21 +151,63 @@
   }
 }
 
-@keyframes disappear {
-  from {
-    top: 0vh;
-  }
-  to {
-    top: -100vh;
-  }
-}
+// @keyframes disappear {
+//   from {
+//     left: 0vh;
+//   }
+//   to {
+//     left: -100vh;
+//   }
+// }
 
 @keyframes appear {
   from {
-    top: -100vh;
+    left: -100vh;
   }
 
   to {
-    top: 0vh;
+    left: 0vh;
+  }
+}
+
+@keyframes easeOutBounceOut {
+  0% {
+    transform: translateX(0%);
+  }
+
+  12% {
+    transform: translateX(-10.89%);
+  }
+
+  24% {
+    transform: translateX(-43.56%);
+  }
+
+  36% {
+    transform: translateX(-98.01%);
+  }
+
+  54% {
+    transform: translateX(-75.02%);
+  }
+
+  74% {
+    transform: translateX(-98.37%);
+  }
+
+  82% {
+    transform: translateX(-93.75%);
+  }
+
+  92% {
+    transform: translateX(-99.34%);
+  }
+
+  96% {
+    transform: translateX(-98.46%);
+  }
+
+  100% {
+    transform: translateX(-100%);
   }
 }

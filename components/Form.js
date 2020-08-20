@@ -4,7 +4,7 @@ import Loader from "./Loader";
 
 import axios from "axios";
 
-import "../styles/Form.c.scss";
+import "../styles/components/Form.scss";
 
 import { Validators } from "../site.config";
 

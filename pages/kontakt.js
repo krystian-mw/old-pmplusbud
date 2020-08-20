@@ -2,7 +2,7 @@ import Form from "../components/Form";
 import Map from "../components/Map";
 import ClientOnly from "../components/ClientOnly";
 
-import "../styles/Kontakt.p.scss";
+import "../styles/pages/Kontakt.scss";
 
 import { ContainerClass } from "../site.config";
 

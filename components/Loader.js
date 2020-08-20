@@ -1,8 +1,8 @@
-import "../styles/Loader.c.scss";
+import "../styles/components/Loader.scss";
 
-export default function Loader(props) {
+export default function Loader() {
   return (
-    <div id="Loader" {...props}>
+    <div id="Loader">
       <div className="circle"></div>
     </div>
   );
