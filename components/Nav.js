@@ -11,11 +11,6 @@ export default function Nav() {
   const [show, setShow] = useState(false);
   const router = useRouter();
 
-  // prevent the middle bar of the toggler animating after first page load
-  // prevent menuFlash after first page load
-  const [notFirstPage, setNotFirstPage] = useState(false);
-
-
   useEffect(() => {
     router.events.on("routeChangeStart", () => {
       setShow(false);
@@ -29,13 +24,12 @@ export default function Nav() {
   };
 
   const toggler = () => {
-    setShow(!show);
-    setNotFirstPage(true);
     toggleOverflowHidden(show);
+    setShow(!show);
   };
 
   return (
-    <div id="Nav" className={`${show ? "show" : ""} ${notFirstPage ? "not-first-page" : ""}`}>
+    <div id="Nav">
       <div className={ContainerClass}>
         <div className="row">
           <div className="col logo">
@@ -45,7 +39,7 @@ export default function Nav() {
               </a>
             </Link>
           </div>
-          <div className={`col-12 col-${Breakpoint}-8 menu`}>
+          <div className={`col-12 col-${Breakpoint}-8 menu ${show ? "show" : ""}`}>
             {Menu.map((item) => (
               <Link key={item.text} href={item.url}>
                 <a className={router.pathname === item.url ? "active" : ""}>
@@ -55,10 +49,7 @@ export default function Nav() {
             ))}
           </div>
         </div>
-        <div
-          onClick={toggler}
-          className={`toggler ${notFirstPage ? "not-first-page" : ""}`}
-        >
+        <div onClick={toggler} className={`toggler ${show ? "toggled" : ""}`}>
           <div />
           <div />
           <div />

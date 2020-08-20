@@ -1,4 +1,5 @@
 import { useRef, useEffect, useState } from "react";
+import { useInView } from "react-intersection-observer";
 
 import Loader from "./Loader";
 
@@ -13,19 +14,21 @@ export default function Map() {
     `?key=${GOOGLE_PUBLIC_API_KEY}` +
     `&q=Lesser+Poland+Voivodeship,+Poland`;
 
-  useEffect(() => {
-    if (loading) iframeRef.current.src = src;
-  }, []);
+  const [ref, inView, entry] = useInView({
+    threshold: 0.5,
+    triggerOnce: true,
+  });
 
   return (
     <>
-      {loading ? <Loader /> : null}
+      {!inView ? <Loader /> : <div />}
       <iframe
-        ref={iframeRef}
+        id="Map"
+        ref={ref}
         width="100%"
         height="100%"
         frameBorder="0"
-        onLoad={() => setLoading(false)}
+        src={inView ? src : null}
       />
     </>
   );

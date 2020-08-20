@@ -1,15 +1,13 @@
 @import "../colors.scss";
 
 #Loader {
-  .circle {
-    width: 150px;
-    height: 150px;
-    margin: 1rem auto;
-    border-radius: 50%;
-    border: 20px solid $oxford-blue;
-    border-bottom: 20px solid $orange-web;
-    animation: spin 1s linear 0s infinite;
-  }
+  width: 150px;
+  height: 150px;
+  margin: 1rem auto;
+  border-radius: 50%;
+  border: 20px solid $oxford-blue;
+  border-bottom: 20px solid $orange-web;
+  animation: spin 1s linear 0s infinite;
 }
 
 @keyframes spin {

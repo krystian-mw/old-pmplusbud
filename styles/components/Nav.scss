@@ -69,22 +69,7 @@
       }
     }
 
-    // animation
-    &:not(.show) {
-      // prevent menu flash on page load
-      &:not(.not-first-page) .menu {
-        display: none;
-      }
-
-      &.not-first-page .menu {
-        animation: easeOutBounceOut 1.5s linear forwards;
-      }
-    }
-
     .menu {
-      // animation
-      animation: appear 0.5s linear forwards;
-
       // fullscreen
       position: fixed;
       z-index: 51;
@@ -108,36 +93,41 @@
       }
     }
 
-    // toggler animation
-    &.show {
-      .toggler {
-        position: fixed;
-        div {
-          transition: all 0.5s;
-          &:nth-child(2) {
-            display: none;
-          }
+    // start the animation magic
+    // inital position before screen
+    .menu {
+      top: 0vh;
+      left: -100vw;
+      transition: all 0.5s;
 
-          &:nth-child(1) {
-            transform: rotate(-135deg) translateY(-12px);
-          }
-          &:nth-child(3) {
-            transform: rotate(135deg) translateY(12px);
-          }
+      // when open, move to screen
+      &.show {
+        left: 0vw;
+      }
+    }
+
+    .toggler {
+      div {
+        transition: all 0.5s;
+        &:nth-child(2) {
+          display: none;
         }
       }
     }
 
-    &:not(.show) {
-      .toggler {
-        div {
-          transition: all 0.5s;
+    .toggled {
+      div {
+        width: 100%;
+        position: absolute;
+        transform-origin: 50% 50%;
+        &:nth-child(1) {
+          transform: rotate(215deg);
         }
-
-        &.not-first-page {
-          div:nth-child(2) {
-            animation: disguiseSpinner 0.6s;
-          }
+        &:nth-child(2) {
+          display: none;
+        }
+        &:nth-child(3) {
+          transform: rotate(-215deg);
         }
       }
     }
@@ -148,66 +138,5 @@
   from {
     transform: rotate(-180deg) scale(1.5);
     opacity: 0;
-  }
-}
-
-// @keyframes disappear {
-//   from {
-//     left: 0vh;
-//   }
-//   to {
-//     left: -100vh;
-//   }
-// }
-
-@keyframes appear {
-  from {
-    left: -100vh;
-  }
-
-  to {
-    left: 0vh;
-  }
-}
-
-@keyframes easeOutBounceOut {
-  0% {
-    transform: translateX(0%);
-  }
-
-  12% {
-    transform: translateX(-10.89%);
-  }
-
-  24% {
-    transform: translateX(-43.56%);
-  }
-
-  36% {
-    transform: translateX(-98.01%);
-  }
-
-  54% {
-    transform: translateX(-75.02%);
-  }
-
-  74% {
-    transform: translateX(-98.37%);
-  }
-
-  82% {
-    transform: translateX(-93.75%);
-  }
-
-  92% {
-    transform: translateX(-99.34%);
-  }
-
-  96% {
-    transform: translateX(-98.46%);
-  }
-
-  100% {
-    transform: translateX(-100%);
   }
 }

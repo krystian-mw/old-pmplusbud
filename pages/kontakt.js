@@ -1,6 +1,5 @@
 import Form from "../components/Form";
 import Map from "../components/Map";
-import ClientOnly from "../components/ClientOnly";
 
 import "../styles/pages/Kontakt.scss";
 
@@ -17,9 +16,7 @@ export default function Contact() {
           <div className="row">
             <div className="col-12 map">
               <h1>Działamy na całym Województwie Małopolskim!</h1>
-              <ClientOnly>
-                <Map />
-              </ClientOnly>
+              {typeof window !== undefined ? <Map /> : null}
             </div>
           </div>
         </div>
