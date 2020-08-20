@@ -16,6 +16,16 @@ export const ContainerClass = "container-fluid container-lg";
 
 export const Breakpoint = "lg";
 
+export const srcSetSizes = [
+  { transformation: "/f_auto,q_70,w_256", width: "256w" },
+  { transformation: "/f_auto,q_70,w_512", width: "512w" },
+  { transformation: "/f_auto,q_70,w_768", width: "768w" },
+  { transformation: "/f_auto,q_70,w_992", width: "992w" },
+  { transformation: "/f_auto,q_70,w_1024", width: "1024w" },
+];
+
+export const imageBaseSrc = "https://res.cloudinary.com/next-pmplusbud";
+
 export const TEMPLATE_ID = "d-4b7fde2b56364e2c966a09201bc3a022";
 
 export const SENDGRID_API_KEY =
@@ -24,8 +34,3 @@ export const SENDGRID_API_KEY =
 export const EMAIL_ADDRESS = "krystian@mwebdev.co.uk";
 
 export const GOOGLE_PUBLIC_API_KEY = "AIzaSyAXMb2bZvOTRJ3XQ1-4GS5ePTRDbyGTfsU";
-
-export const FACEBOOK_PAGE_ID = "1204313853055606";
-
-export const FACEBOOK_PAGE_ACCESS_TOKEN =
-  "EAAESK4XNzcMBAGsQaEyytJ21ZA12MZBKywnDA7BLQgtVVMQaBTt3DT08ZCkLUECWZCzDdWAFbXZCeGln0DKn9U6fwmUoBebeY8GoviuYVjYc3qNQugijvYYHikt1CqY5Vg29RRYYJUiaYPZBio4jpOtFG9irMZArZCfj90ipXH5FA1j5hcZACMhgLw1aGqzqmQTYZD";

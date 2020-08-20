@@ -4,6 +4,7 @@ import Router from "next/router";
 
 import Nav from "../components/Nav";
 import Loader from "../components/Loader";
+import Cookies from "../components/Cookies";
 
 import "../styles/bootstrap.scss";
 import "../styles/globals.scss";
@@ -44,6 +45,7 @@ export default class MyApp extends App {
         </Head>
         <Nav />
         {this.state.loading ? <Loader /> : <Component {...pageProps} />}
+        <Cookies />
       </>
     );
   }

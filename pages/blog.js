@@ -23,14 +23,13 @@ export default function Blog(props) {
   );
 }
 
-export const getStaticProps = async () => {
-    // fb returns {data: [posts], paging: [cursor]}
-//   const props = (await axios.get(
-//     `https://graph.facebook.com/v8.0/${FACEBOOK_PAGE_ID}/feed` +
-//       `?fields=created_time,message,likes{id},actions,shares,comments{from,message}` +
-//       `&access_token=${FACEBOOK_PAGE_ACCESS_TOKEN}`
-//   )).data;
-    const props = { data: [{id: 1, message: 'First Post'}, {id:2, message: 'Second Post'}] }
+export const getStaticProps = () => {
+  const props = {
+    data: [
+      { id: 1, message: "First Post" },
+      { id: 2, message: "Second Post" },
+    ],
+  };
 
   return { props };
 };
