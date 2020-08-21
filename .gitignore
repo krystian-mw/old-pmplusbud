@@ -33,3 +33,7 @@ yarn*
 .vercel
 
 yarn.lock
+
+# PWA/SW files
+/public/sw*
+/public/workbox*
