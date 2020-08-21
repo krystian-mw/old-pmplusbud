@@ -32,6 +32,15 @@ export default class MyApp extends App {
 
   render() {
     const { Component, pageProps } = this.props;
+//     if (typeof window !== 'undefined')  {
+//         if ("serviceWorker" in navigator) {
+//             try {
+//   navigator.serviceWorker.register("sw.js").then(() => {
+//     console.log("[ServiceWorker**] - Registered");
+//   }); } catch (e) {
+//       console.log(e)
+//   }
+// }}
     return (
       <>
         <Head>
@@ -41,7 +50,6 @@ export default class MyApp extends App {
           />
           <link rel="icon" href="/favicon.ico" />
           <link rel="manifest" href="/manifest.json" />
-          <script src="/pwabuilder-sw-register.js" type="module" async />
         </Head>
         <Nav />
         {this.state.loading ? <Loader /> : <Component {...pageProps} />}

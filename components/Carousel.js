@@ -17,32 +17,24 @@ const Slides = [
 ];
 
 const Slide = ({ src }) => {
-  let toPreFetch = [imageBaseSrc + src];
-  const [ref, inView, entry] = useInView({
-    triggerOnce: true,
-  });
-
-  let srcSet = "";
-
-  srcSetSizes.forEach((size, index) => {
-    toPreFetch.push(`${imageBaseSrc}${size.transformation}${src}`);
-    srcSet += `${imageBaseSrc}${size.transformation}${src} ${size.width}${
-      index !== srcSetSizes.length ? ", " : ""
-    }`;
-  });
-
   return (
     <>
       <Head>
-        {toPreFetch.map((image) => (
-          <link rel="prefetch" href={image} />
-        ))}
+        <link
+          key={src}
+          rel="prefetch"
+          href={`${imageBaseSrc}${
+            srcSetSizes[srcSetSizes.length - 1].transformation
+          }${src}`}
+          as="image"
+          crossOrigin="anonymous"
+        />
       </Head>
       <img
-        ref={ref}
-        sizes="(min-width: 30em) 28em, 100vw"
-        src={inView ? imageBaseSrc + src : null}
-        srcSet={inView ? srcSet : null}
+        src={`${imageBaseSrc}${
+          srcSetSizes[srcSetSizes.length - 1].transformation
+        }${src}`}
+        crossOrigin="anonymous"
       />
     </>
   );
