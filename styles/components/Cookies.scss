@@ -1,0 +1,23 @@
+@import "../colors.scss";
+
+#Cookies {
+  display: flex;
+  flex-direction: column;
+  position: fixed;
+  bottom: 1rem;
+  width: calc(100% - 2rem);
+  background: $oxford-blue;
+  color: $orange-web;
+  padding: 1rem;
+  margin: 1rem;
+  text-align: center;
+
+  p {
+    width: 100%;
+    margin: 0px;
+
+    &:nth-child(2) {
+        font-size: 0.9rem;
+    }
+  }
+}

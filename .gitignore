@@ -34,6 +34,7 @@ yarn*
 
 yarn.lock
 
-# PWA/SW files
+# misc
 /public/sw*
 /public/workbox*
+/public/tmp*

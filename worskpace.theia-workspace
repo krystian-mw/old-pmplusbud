@@ -1,0 +1,12 @@
+{
+   "folders": [
+      {
+         "path": ""
+      }
+   ],
+   "settings": {
+       "hero": {
+           "disable-compile-files-on-did-save-code": true
+       }
+   }
+}
