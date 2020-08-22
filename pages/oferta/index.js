@@ -1,5 +1,5 @@
-import { ContainerClass } from "../site.config";
-import "../styles/pages/Oferta.scss";
+import { ContainerClass } from "../../site.config";
+import "../../styles/pages/Oferta.scss";
 
 import { Component } from "react";
 

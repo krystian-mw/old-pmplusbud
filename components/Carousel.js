@@ -17,23 +17,35 @@ const Slides = [
 ];
 
 const Slide = ({ src }) => {
+  const [ref, inView, entry] = useInView({
+    threshold: 0.5,
+    triggerOnce: true,
+  });
+
   return (
     <>
       <Head>
-        <link
-          key={src}
-          rel="prefetch"
-          href={`${imageBaseSrc}${
-            srcSetSizes[srcSetSizes.length - 1].transformation
-          }${src}`}
-          as="image"
-          crossOrigin="anonymous"
-        />
+        {src === Slides[0] ? (
+          <link
+            key={src}
+            rel="prefetch"
+            href={`${imageBaseSrc}${
+              srcSetSizes[srcSetSizes.length - 1].transformation
+            }${src}`}
+            as="image"
+            crossOrigin="anonymous"
+          />
+        ) : null}
       </Head>
       <img
-        src={`${imageBaseSrc}${
-          srcSetSizes[srcSetSizes.length - 1].transformation
-        }${src}`}
+        ref={ref}
+        src={
+          inView
+            ? `${imageBaseSrc}${
+                srcSetSizes[srcSetSizes.length - 1].transformation
+              }${src}`
+            : null
+        }
         crossOrigin="anonymous"
       />
     </>
