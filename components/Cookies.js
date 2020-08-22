@@ -6,7 +6,9 @@ import "../styles/components/Cookies.scss";
 
 import colors from "../styles/colors.scss";
 
-const cookieName = "cookies_accepted8";
+import { version } from "../package.json";
+
+const cookieName = `cookies_accepted_v${version}`;
 
 export default function Cookies() {
   const [hide, setHide] = useState(true);

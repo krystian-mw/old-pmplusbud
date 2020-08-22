@@ -1,11 +1,6 @@
 import axios from "axios";
 
-import {
-  ContainerClass,
-  Breakpoint,
-  FACEBOOK_PAGE_ACCESS_TOKEN,
-  FACEBOOK_PAGE_ID,
-} from "../site.config";
+import { ContainerClass, Breakpoint } from "../site.config";
 
 export default function Blog(props) {
   const posts = props.data;

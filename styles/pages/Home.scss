@@ -1,0 +1,21 @@
+@import "../colors.scss";
+@import "../breakpoint.scss";
+
+#Home {
+  .about {
+    text-align: center;
+    color: $oxford-blue;
+  }
+
+  #Carousel {
+    img {
+      width: 100%;
+      height: 400px;
+      object-fit: cover;
+    }
+
+    @media (min-width: $breakpoint) {
+      padding: 1rem;
+    }
+  }
+}

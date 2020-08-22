@@ -3,5 +3,18 @@
 #Footer {
     width: 100%;
     background: $oxford-blue;
-    color: $orange-web;
+    color: $orange-web;    
+    text-align: center;
+
+    .footer-col {
+        padding: 1rem;
+        display: flex;
+        flex-direction: column;
+
+        a, p {
+            color: $orange-web;
+            margin: 0px;
+            padding: 0.25rem;
+        }
+    }
 }

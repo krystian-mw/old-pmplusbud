@@ -26,7 +26,7 @@ export default function Map() {
         id="Map"
         ref={ref}
         width="100%"
-        height="100%"
+        height="400px"
         frameBorder="0"
         src={inView ? src : null}
       />
