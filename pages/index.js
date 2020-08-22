@@ -1,6 +1,10 @@
 import Carousel from "../components/Carousel";
 import Seo from "../components/Seo";
 
+export const config = {
+    amp: true
+}
+
 export default function Home() {
   return (
     <>

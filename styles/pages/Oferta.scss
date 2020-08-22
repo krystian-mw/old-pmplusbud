@@ -1,6 +1,22 @@
 @import "../colors.scss";
 
 #Oferta {
+  .bg-blue {
+    background: $oxford-blue;
+  }
+
+  .bg-orange {
+    background: $orange-web;
+  }
+
+  .text-blue {
+    color: $oxford-blue;
+  }
+
+  .text-orange {
+    color: $orange-web;
+  }
+
   &.dark {
     article {
       background: $orange-web;
@@ -12,7 +28,7 @@
       background: unset;
     }
   }
-  
+
   section {
     article {
       margin: auto;

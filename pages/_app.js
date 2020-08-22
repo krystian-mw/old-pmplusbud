@@ -5,6 +5,7 @@ import Router from "next/router";
 import Nav from "../components/Nav";
 import Loader from "../components/Loader";
 import Cookies from "../components/Cookies";
+import Footer from "../components/Footer";
 
 import "../styles/bootstrap.scss";
 import "../styles/globals.scss";
@@ -32,15 +33,6 @@ export default class MyApp extends App {
 
   render() {
     const { Component, pageProps } = this.props;
-//     if (typeof window !== 'undefined')  {
-//         if ("serviceWorker" in navigator) {
-//             try {
-//   navigator.serviceWorker.register("sw.js").then(() => {
-//     console.log("[ServiceWorker**] - Registered");
-//   }); } catch (e) {
-//       console.log(e)
-//   }
-// }}
     return (
       <>
         <Head>
@@ -53,6 +45,7 @@ export default class MyApp extends App {
         </Head>
         <Nav />
         {this.state.loading ? <Loader /> : <Component {...pageProps} />}
+        <Footer />
         <Cookies />
       </>
     );

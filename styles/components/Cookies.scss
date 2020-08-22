@@ -1,8 +1,6 @@
 @import "../colors.scss";
 
 #Cookies {
-  display: flex;
-  flex-direction: column;
   position: fixed;
   bottom: 1rem;
   width: calc(100% - 2rem);
@@ -17,7 +15,26 @@
     margin: 0px;
 
     &:nth-child(2) {
-        font-size: 0.9rem;
+      font-size: 0.9rem;
+    }
+  }
+
+  .timer {
+    width: 2rem;
+    height: 2rem;
+    display: flex;
+    border-radius: 50%;
+    transition: all 0.5s;
+    position: absolute;
+    right: 0.5rem;
+    top: 0.5rem;
+
+    p {
+      background: $oxford-blue;
+      border-radius: 50%;
+      width: 1.5rem;
+      height: 1.5rem;
+      margin: auto;
     }
   }
 }
