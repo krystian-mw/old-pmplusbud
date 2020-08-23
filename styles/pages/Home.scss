@@ -5,6 +5,11 @@
   .about {
     text-align: center;
     color: $oxford-blue;
+    margin: auto;
+
+    h2 {
+        font-size: 3rem;
+    }
   }
 
   #Carousel {

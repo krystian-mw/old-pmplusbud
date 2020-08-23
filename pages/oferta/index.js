@@ -1,71 +1,52 @@
+import { Component } from "react";
 import "../../styles/pages/Oferta.scss";
 
-import { Component } from "react";
+const ContainerClass = process.env.NEXT_PUBLIC_CONTAINER_CLASS;
+const Breakpoint = process.env.NEXT_PUBLIC_BREAKPOINT;
 
-const images = [
-  "/images/Experienced-Polish-builder-in-London-2048x1365.jpg",
-  "https://static.kb.pl/static/site_media/uploads/media_image/original/wpis/999/budowa-domu.jpg",
-  "https://www.build-review.com/wp-content/uploads/2019/12/Home-Renovation.jpg",
+const ImageRoot = process.env.NEXT_PUBLIC_IMAGE_ROOT;
+
+const offers = [
+  {
+    title: `Wznoszenia Bydunków`,
+    description: `Wzeniesemy domy hale itd`,
+    image: `/oferta/stolarz-mierzy-deske`,
+  },
+  {
+    title: `Prace Wykończeniowe`,
+    description: ``,
+    image: `/oferta/plan-domu-3d`,
+  },
 ];
 
-export default class Offer extends Component {
-  state = {
-    var: true,
-  };
-  componentDidMount() {
-    // Going to be a bit hackish to preserve resources
-    // repo: https://github.com/geosigno/simpleParallax.js
-    if (typeof window !== "undefined") {
-      const script = document.createElement("script");
-      script.src =
-        "https://cdn.jsdelivr.net/npm/simple-parallax-js@5.6.1/dist/simpleParallax.min.js";
-      script.crossOrigin = "anonymous";
-      script.async = true;
-      script.onload = () =>
-        new window.simpleParallax(document.querySelectorAll(".parallax"), {
-          orientation: "up",
-          scale: 2,
-        });
-      document.body.appendChild(script);
-    }
-  }
-  render() {
-    return (
-      <div id="Oferta" className={this.state.var ? "dark" : "light"}>
-        <section>
-          <article>
-            <h1>Oferta</h1>
-            <p>Tutaj bedzie opis poniewaz SEO jest bardzo wazne oraz preview</p>
-          </article>
-          <img className="parallax" src={images[0]} />
-        </section>
+const Card = ({ title, description, image, key, className }) => (
+  <div key={key} className={className}>
+    <h2>{title}</h2>
+    <div className="card-content">
+      <img
+        src={`${ImageRoot}/ar_1.77,c_fill,g_auto,f_auto,q_70,w_1024${image}.webp`}
+      />
+      <p>{description}</p>
+    </div>
+  </div>
+);
 
-        <section>
-          <article>
-            <h1>New buildy</h1>
-            <p>Doprowadzimy do stanu surowego</p>
-          </article>
-          <img className="parallax" src={images[1]} />
-        </section>
-
-        <section>
-          <article>
-            <h1>Remonty</h1>
-            <p>Fachowo wyremontujemy twoje cztery katy</p>
-          </article>
-          <img className="parallax" src={images[2]} />
-        </section>
-
-        <button onClick={() => this.setState({ var: !this.state.var })} style={{
-            width: '50%',
-            display: 'block',
-            margin: '2rem auto',
-            border: 'none',
-            borderRadius: '0px'
-        }}>
-          Switch var
-        </button>
+export default function Oferta() {
+  const ColClass = `col-12 col-${Breakpoint}-6`;
+  return (
+    <div id="Oferta" className={ContainerClass}>
+      <h1>Oferta</h1>
+      <div className="row">
+        {offers.map((offer) => (
+          <Card
+            className={`card ${ColClass}`}
+            key={offer.title}
+            title={offer.title}
+            description={offer.description}
+            image={offer.image}
+          />
+        ))}
       </div>
-    );
-  }
+    </div>
+  );
 }

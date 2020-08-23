@@ -46,7 +46,7 @@ export default function Footer() {
             ))}
           </div>
           <div className={ColClass}>
-            <h5>Firma</h5>
+            <h4>Firma</h4>
             <p>NIP: 000000</p>
             <a href="mailto:kontakt@pmplusbud.pl">kontakt@pmplusbud.pl</a>
             <a href="tel:123133412">123 213 23</a>
