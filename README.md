@@ -1,1 +1,1 @@
-[![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/#https://github.com/krystian-mw/pmplusbud)
+Official source code of [https://pmplusbud.pl/](https://pmplusbud.pl/)
