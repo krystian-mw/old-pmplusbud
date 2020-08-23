@@ -3,11 +3,11 @@ import Head from "next/head";
 import { Carousel } from "react-responsive-carousel";
 import { useInView } from "react-intersection-observer";
 
-import { imageBaseSrc, srcSetSizes } from "../site.config";
-
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 
 import "../styles/components/Carousel.scss";
+
+const imageBaseSrc = process.env.NEXT_PUBLIC_IMAGE_ROOT;
 
 const Slides = [
   "/carousel/budowlancy-zakladaja-izolacje-i-maluja.webp",
@@ -29,9 +29,7 @@ const Slide = ({ src }) => {
           <link
             key={src}
             rel="prefetch"
-            href={`${imageBaseSrc}${
-              srcSetSizes[srcSetSizes.length - 1].transformation
-            }${src}`}
+            href={`${imageBaseSrc}/f_auto,q_70,w_1024${src}`}
             as="image"
             crossOrigin="anonymous"
           />
@@ -39,13 +37,7 @@ const Slide = ({ src }) => {
       </Head>
       <img
         ref={ref}
-        src={
-          inView
-            ? `${imageBaseSrc}${
-                srcSetSizes[srcSetSizes.length - 1].transformation
-              }${src}`
-            : null
-        }
+        src={inView ? `${imageBaseSrc}/f_auto,q_70,w_1024${src}` : null}
         crossOrigin="anonymous"
       />
     </>

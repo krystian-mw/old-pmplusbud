@@ -3,7 +3,8 @@ import Map from "../components/Map";
 
 import "../styles/pages/Kontakt.scss";
 
-import { ContainerClass } from "../site.config";
+const ContainerClass = process.env.NEXT_PUBLIC_CONTAINER_CLASS;
+const Breakpoint = process.env.NEXT_PUBLIC_BREAKPOINT;
 
 export default function Contact() {
   return (

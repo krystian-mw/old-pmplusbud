@@ -6,7 +6,10 @@ import axios from "axios";
 
 import "../styles/components/Form.scss";
 
-import { Validators } from "../site.config";
+const Validators = {
+  Name: /^[a-zA-Z]+[\s|-]?[a-zA-Z]+[\s|-]?[a-zA-Z]+$/,
+  Email: /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
+};
 
 const formatBytes = (bytes, decimals) => {
   // Source: SO Community

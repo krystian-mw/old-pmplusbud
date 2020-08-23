@@ -1,6 +1,5 @@
-import axios from "axios";
-
-import { ContainerClass, Breakpoint } from "../site.config";
+const ContainerClass = process.env.NEXT_PUBLIC_CONTAINER_CLASS;
+const Breakpoint = process.env.NEXT_PUBLIC_BREAKPOINT;
 
 export default function Blog(props) {
   const posts = props.data;

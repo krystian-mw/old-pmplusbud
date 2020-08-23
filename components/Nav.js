@@ -5,7 +5,17 @@ import { useRouter } from "next/router";
 
 import "../styles/components/Nav.scss";
 
-import { Menu, ContainerClass, Breakpoint } from "../site.config";
+const Menu = [
+    { text: "Strona Główna", url: "/" },
+    { text: "Oferta", url: "/oferta" },
+    { text: "Sklep", url: "/sklep" },
+    { text: "Blog", url: "/blog" },
+    { text: "Strefa Klienta", url: "/strefa-klienta" },
+    { text: "Kontakt", url: "/kontakt" },
+];
+
+const ContainerClass = process.env.NEXT_PUBLIC_CONTAINER_CLASS
+const Breakpoint = process.env.NEXT_PUBLIC_BREAKPOINT
 
 export default function Nav() {
   const [show, setShow] = useState(false);

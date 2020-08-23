@@ -2,9 +2,10 @@ import Carousel from "../components/Carousel";
 
 import Seo from "../components/Seo";
 
-import { Breakpoint, ContainerClass } from "../site.config";
+import "../styles/pages/Home.scss";
 
-import '../styles/pages/Home.scss'
+const ContainerClass = process.env.NEXT_PUBLIC_CONTAINER_CLASS;
+const Breakpoint = process.env.NEXT_PUBLIC_BREAKPOINT;
 
 export default function Home() {
   const ColClass = `col-12 col-${Breakpoint}-6`;

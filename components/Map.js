@@ -3,15 +3,13 @@ import { useInView } from "react-intersection-observer";
 
 import Loader from "./Loader";
 
-import { GOOGLE_PUBLIC_API_KEY } from "../site.config";
-
 export default function Map() {
   const iframeRef = useRef();
   const [loading, setLoading] = useState(true);
 
   const src =
     "https://www.google.com/maps/embed/v1/place" +
-    `?key=${GOOGLE_PUBLIC_API_KEY}` +
+    `?key=${process.env.NEXT_PUBLIC_GOOGLE_PUBLIC_API_KEY}` +
     `&q=Lesser+Poland+Voivodeship,+Poland`;
 
   const [ref, inView, entry] = useInView({

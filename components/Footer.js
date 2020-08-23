@@ -1,8 +1,9 @@
 import Link from "next/link";
 
-import { ContainerClass, Breakpoint } from "../site.config";
-
 import "../styles/components/Footer.scss";
+
+const ContainerClass = process.env.NEXT_PUBLIC_CONTAINER_CLASS;
+const Breakpoint = process.env.NEXT_PUBLIC_BREAKPOINT;
 
 const Sitemap = [
   {
