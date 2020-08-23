@@ -4,9 +4,8 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build && yarn docs",
+    "build": "next build",
     "start": "next start",
-    "docs": "documentation build pages/*.js components/*.js -f html --shallow -o public/docs"
   },
   "dependencies": {
     "@sendgrid/mail": "^6",
