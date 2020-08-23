@@ -24,15 +24,15 @@ export default function Cookies() {
   const Timer = ({ on, setHide }) => {
     const limit = 10000;
     const [time, setTime] = useState(limit);
-    const increment = 25;
-    useLayoutEffect(() => {
+    const increment = 250;
+    useEffect(() => {
       if (time > 0 && on) {
         setTimeout(() => setTime(time - increment), increment);
       } else if (on) accept();
     }, [time]);
     return (
       <div
-        className="timer"
+        className="icon timer"
         style={{
           background: `conic-gradient(#fca311ff ${parseFloat(
             (time / limit) * 100
@@ -67,6 +67,9 @@ export default function Cookies() {
         zgodnie z przepisami z ustawy RODO cos tam cos tam bylo
       </p>
       <Timer on={!hide} setHide={setHide} />
+      <div className="icon close" onClick={accept}>
+        <p>X</p>
+      </div>
     </div>
   );
 }

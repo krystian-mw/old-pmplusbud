@@ -4,8 +4,8 @@
   position: fixed;
   bottom: 1rem;
   width: calc(100% - 2rem);
-  background: $oxford-blue;
-  color: $orange-web;
+  background: $platinum;
+  color: $oxford-blue;
   padding: 1rem;
   margin: 1rem;
   text-align: center;
@@ -19,15 +19,24 @@
     }
   }
 
-  .timer {
+  .icon {
     width: 2rem;
     height: 2rem;
     display: flex;
     border-radius: 50%;
     transition: all 0.5s;
     position: absolute;
-    right: 0.5rem;
     top: 0.5rem;
+    color: $orange-web;
+
+    &.timer {
+      left: 0.5rem;
+    }
+
+    &.close {
+      right: 0.5rem;
+      background: $oxford-blue;
+    }
 
     p {
       background: $oxford-blue;

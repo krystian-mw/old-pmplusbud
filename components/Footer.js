@@ -11,8 +11,8 @@ const Sitemap = [
     text: "Strona Glowna",
   },
   {
-    url: "/blog",
-    text: "Blog",
+    url: "/polityka-prywatnosci",
+    text: "Polityka Prywatnosci",
   },
   {
     url: "/kontakt",
