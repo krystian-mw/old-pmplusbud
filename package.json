@@ -1,11 +1,12 @@
 {
   "name": "pmplusbud",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
-    "start": "next start"
+    "build": "next build && yarn docs",
+    "start": "next start",
+    "docs": "documentation build pages/*.js components/*.js -f html --shallow -o public/docs"
   },
   "dependencies": {
     "@sendgrid/mail": "^6",
@@ -16,6 +17,7 @@
     "next": "9.5.2",
     "next-pwa": "^3.1.1",
     "node-sass": "^4.14.1",
+    "prop-types": "^15.7.2",
     "react": "16.13.1",
     "react-dom": "16.13.1",
     "react-intersection-observer": "^8.27.0",

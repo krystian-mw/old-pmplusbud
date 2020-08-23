@@ -7,6 +7,10 @@ import "../styles/pages/Home.scss";
 const ContainerClass = process.env.NEXT_PUBLIC_CONTAINER_CLASS;
 const Breakpoint = process.env.NEXT_PUBLIC_BREAKPOINT;
 
+/**
+ * Home Page Component
+ * @component
+ */
 export default function Home() {
   const ColClass = `col-12 col-${Breakpoint}-6`;
   return (

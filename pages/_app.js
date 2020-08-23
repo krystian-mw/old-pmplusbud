@@ -10,6 +10,11 @@ import Footer from "../components/Footer";
 import "../styles/bootstrap.scss";
 import "../styles/globals.scss";
 
+/**
+ * Main App Component
+ * @extends {App} Base Component
+ * @param {props} any
+ */
 export default class MyApp extends App {
   constructor(props) {
     super(props);

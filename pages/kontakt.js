@@ -6,6 +6,11 @@ import "../styles/pages/Kontakt.scss";
 const ContainerClass = process.env.NEXT_PUBLIC_CONTAINER_CLASS;
 const Breakpoint = process.env.NEXT_PUBLIC_BREAKPOINT;
 
+/**
+ * Contact Page Component
+ * @type {function}
+ * @returns {Component}
+ */
 export default function Contact() {
   return (
     <div id="Kontakt" className={ContainerClass}>

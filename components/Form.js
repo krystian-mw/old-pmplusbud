@@ -2,8 +2,6 @@ import { Component, createRef } from "react";
 
 import Loader from "./Loader";
 
-import axios from "axios";
-
 import "../styles/components/Form.scss";
 
 const Validators = {

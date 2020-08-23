@@ -38,4 +38,5 @@ yarn.lock
 /public/sw*
 /public/workbox*
 /public/tmp*
+/public/docs*
 .env.local
