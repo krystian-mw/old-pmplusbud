@@ -13,7 +13,7 @@ export default function Map() {
     `&q=Lesser+Poland+Voivodeship,+Poland`;
 
   const [ref, inView, entry] = useInView({
-    threshold: 0.5,
+    threshold: 0.2,
     triggerOnce: true,
   });
 

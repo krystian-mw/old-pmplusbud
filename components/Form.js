@@ -9,25 +9,33 @@ const Fields = {
     placeholder: "Imię i Nazwisko",
     match: /^[a-zA-Z]+[\s|-]?[a-zA-Z]+[\s|-]?[a-zA-Z]+$/,
     required: true,
-    type: "input",
+    element: "input",
+    type: "text",
+    autocomplete: "name",
   },
   Email: {
     placeholder: "Adres E-Mail",
     match: /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
     required: false,
-    type: "input",
+    element: "input",
+    type: "email",
+    autocomplete: "email",
   },
   Phone: {
     placeholder: "Numer telefonu",
     match: /^[+]*[(]{0,1}[0-9]{1,4}[)]{0,1}[-\s\./0-9]*$/,
     required: false,
-    type: "input",
+    element: "input",
+    type: "tel",
+    autocomplete: "tel",
   },
   Message: {
     match: /./,
     placeholder: "Wiadomość ...",
     required: true,
-    type: "textarea",
+    element: "textarea",
+    type: null,
+    autocomplete: null
   },
 };
 
@@ -97,7 +105,10 @@ export default class Form extends Component {
         this.toSend.append(field, this.state[`field${field}`])
       );
 
-      const req = await fetch("/api/kontakt", this.toSend);
+      const req = await fetch("/api/kontakt", {
+        method: "POST",
+        body: this.toSend,
+      });
       const data = await req.json();
 
       if (!data.success) throw "Nie mogliśmy otrzymać twojej wiadomości";
@@ -179,9 +190,11 @@ export default class Form extends Component {
           <div className="row form">
             {FieldKeys.map((field) => (
               <Fragment key={field}>
-                {createElement(Fields[field].type, {
+                {createElement(Fields[field].element, {
                   name: field,
                   placeholder: Fields[field].placeholder,
+                  type: Fields[field].type,
+                  autocomplete: Fields[field].autocomplete,
                   onChange: this.updateField,
                   value: this.state[`field${field}`],
                   className: !this.state[`validate${field}`]
@@ -209,7 +222,7 @@ export default class Form extends Component {
             />
             <div className="col">
               {this.files.map((file) => (
-                <div className="row no-gutters single-file">
+                <div key={file.name} className="row no-gutters single-file">
                   <div className="col">{file.name}</div>
                   <div className="col-2">{formatBytes(file.size)}</div>
                   <div className="col-2">

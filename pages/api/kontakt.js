@@ -15,13 +15,18 @@ export default async (req, res) => {
       });
     });
 
-    const { name, email, number, message } = data.fields;
+    const {
+      Name: name,
+      Email: email,
+      Number: number,
+      Message: message,
+    } = data.fields;
 
     const templateId = "d-4b7fde2b56364e2c966a09201bc3a022";
 
     let msg = {
       to: "kontakt@pmplusbud.pl",
-      from: "website@pmplusbud.pl",
+      from: "krystian@mwebdev.co.uk",
       replyTo: email,
       templateId,
       dynamicTemplateData: {
@@ -51,7 +56,8 @@ export default async (req, res) => {
     await sgMail.send(msg);
     res.json({ success: true });
   } catch (e) {
-    res.json({ success: false, e: e.message });
+    console.error(e);
+    res.json({ success: false, e: JSON.stringify(e) });
   }
 };
 
