@@ -1,16 +1,45 @@
-import { Component, createRef } from "react";
+import { Component, createRef, createElement, Fragment } from "react";
 
 import Loader from "./Loader";
 
 import "../styles/components/Form.scss";
 
-const Validators = {
-  Name: /^[a-zA-Z]+[\s|-]?[a-zA-Z]+[\s|-]?[a-zA-Z]+$/,
-  Email: /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
+const Fields = {
+  Name: {
+    placeholder: "Imię i Nazwisko",
+    match: /^[a-zA-Z]+[\s|-]?[a-zA-Z]+[\s|-]?[a-zA-Z]+$/,
+    required: true,
+    type: "input",
+  },
+  Email: {
+    placeholder: "Adres E-Mail",
+    match: /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
+    required: false,
+    type: "input",
+  },
+  Phone: {
+    placeholder: "Numer telefonu",
+    match: /^[+]*[(]{0,1}[0-9]{1,4}[)]{0,1}[-\s\./0-9]*$/,
+    required: false,
+    type: "input",
+  },
+  Message: {
+    match: /./,
+    placeholder: "Wiadomość ...",
+    required: true,
+    type: "textarea",
+  },
 };
 
+const FieldKeys = Object.keys(Fields);
+
+/**
+ * Convert long number of bytes to short formatted number
+ * @license Unlicense SO Community
+ * @param {numer} bytes
+ * @param {number} decimals
+ */
 const formatBytes = (bytes, decimals) => {
-  // Source: SO Community
   if (bytes === 0) return "0 Bytes";
   const k = 1024;
   const dm = decimals < 0 ? 0 : decimals;
@@ -23,20 +52,17 @@ export default class Form extends Component {
   constructor() {
     super();
     this.state = {
-      fieldName: "",
-      fieldEmail: "",
-      fieldPhone: "",
-      fieldMessage: "",
-      validateName: true,
-      validateEmail: true,
-      validatePhone: true,
-      validateMessage: true,
       loaderVisible: false,
       formVisible: true,
       errorMessage: false,
       errorMessageText: false,
       success: false,
     };
+
+    FieldKeys.forEach((field) => {
+      this.state[`field${field}`] = "";
+      this.state[`validate${field}`] = true;
+    });
 
     this.files = [];
     this.filesRef = createRef();
@@ -62,21 +88,17 @@ export default class Form extends Component {
   Submit = async () => {
     this.preSubmit();
     try {
-      if (
-        !this.state.validateName ||
-        !this.state.validateEmail ||
-        !this.state.validatePhone ||
-        !this.state.validateMessage
-      ) {
-        throw "Sprawdż pola";
-      }
+      FieldKeys.forEach((field) => {
+        if (!this.validate(field, this.state[`field${field}`]))
+          throw `Sprawdź ${field}`;
+      });
 
-      this.toSend.append("name", this.state.fieldName);
-      this.toSend.append("email", this.state.fieldEmail);
-      this.toSend.append("phone", this.state.fieldPhone);
-      this.toSend.append("message", this.state.fieldMessage);
+      FieldKeys.forEach((field) =>
+        this.toSend.append(field, this.state[`field${field}`])
+      );
 
-      const { data } = await axios.post("/api/kontakt", this.toSend);
+      const req = await fetch("/api/kontakt", this.toSend);
+      const data = await req.json();
 
       if (!data.success) throw "Nie mogliśmy otrzymać twojej wiadomości";
 
@@ -95,10 +117,16 @@ export default class Form extends Component {
     }
   };
 
+  validate = (name, value) => {
+    // First check if required, if not and is empty return true
+    if (!Fields[name].required && value === "") return true;
+    // Then check regex match
+    return value.search(Fields[name].match) > -1;
+  };
+
   validateOnInput = (e) => {
-    const match = e.target.value.search(Validators[e.target.name]);
-    const invalid = match > -1 ? false : true;
-    this.setState({ [`validate${e.target.name}`]: match > -1 });
+    const { name, value } = e.target;
+    this.setState({ [`validate${name}`]: this.validate(name, value) });
   };
 
   fileHandler = (e) => {
@@ -149,38 +177,22 @@ export default class Form extends Component {
           }`}
         >
           <div className="row form">
-            <input
-              name="Name"
-              placeholder="Imię i Nazwisko"
-              onChange={this.updateField}
-              value={this.state["fieldName"]}
-              className={!this.state["validateName"] ? "input-error" : ""}
-            />
-            {this.state["validateName"] ? null : (
-              <p className="error">Nieprawidłowe Imię</p>
-            )}
-            <input
-              name="Email"
-              placeholder="Adres mailowy"
-              onChange={this.updateField}
-              value={this.state["fieldEmail"]}
-              className={!this.state["validateEmail"] ? "input-error" : ""}
-            />
-            {this.state["validateEmail"] ? null : (
-              <p className="error">Nieprawidłowy Email</p>
-            )}
-            <input
-              name="Phone"
-              placeholder="Numer telefonu"
-              onChange={this.updateField}
-              value={this.state["fieldPhone"]}
-            />
-            <textarea
-              name="Message"
-              placeholder="Wiadomość ..."
-              onChange={this.updateField}
-              value={this.state["fieldMessage"]}
-            />
+            {FieldKeys.map((field) => (
+              <Fragment key={field}>
+                {createElement(Fields[field].type, {
+                  name: field,
+                  placeholder: Fields[field].placeholder,
+                  onChange: this.updateField,
+                  value: this.state[`field${field}`],
+                  className: !this.state[`validate${field}`]
+                    ? "input-error"
+                    : "",
+                })}
+                {this.state[`validate${field}`] ? null : (
+                  <p className="error">Sprawdż {field} jeszcze raz</p>
+                )}
+              </Fragment>
+            ))}
           </div>
           <div className="row buttons">
             <button onClick={() => this.filesRef.current.click()}>
