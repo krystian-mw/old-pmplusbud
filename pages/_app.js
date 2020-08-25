@@ -1,13 +1,10 @@
 import App from "next/app";
-import Head from "next/head";
 import Router from "next/router";
 
 import Nav from "../components/Nav";
 import Loader from "../components/Loader";
 import Cookies from "../components/Cookies";
 import Footer from "../components/Footer";
-
-import manifest from "../public/manifest.json";
 
 import "../styles/bootstrap.scss";
 import "../styles/globals.scss";
@@ -78,6 +75,19 @@ export default class MyApp extends App {
           />
 
           <link rel="manifest" href="/manifest.json" />
+          <script
+            async
+            src="https://www.googletagmanager.com/gtag/js?id=UA-176319237-1"
+          />
+          <script
+            dangerouslySetInnerHTML={{
+              __html: `
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){dataLayer.push(arguments);}
+                gtag('js', new Date());
+                gtag('config', 'UA-176319237-1');`,
+            }}
+          ></script>
         </Head>
         <Nav />
         {this.state.loading ? <Loader /> : <Component {...pageProps} />}
