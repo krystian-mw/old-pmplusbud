@@ -3,6 +3,8 @@ import Router from "next/router";
 import Head from "next/head";
 import { useAmp } from "next/amp";
 
+import ReactGA from 'react-ga';
+
 import Nav from "../components/Nav";
 import Loader from "../components/Loader";
 import Cookies from "../components/Cookies";
@@ -12,6 +14,8 @@ import "../styles/bootstrap.scss";
 import "../styles/globals.scss";
 
 import manifest from "../public/manifest.json";
+
+const TrackingId = process.env.NEXT_PUBLIC_GA_TRACKING_ID
 
 const AppHead = () => {
   const isAmp = useAmp();
@@ -51,18 +55,6 @@ const AppHead = () => {
       />
 
       <link rel="manifest" href="/manifest.json" />
-      <script
-        async
-        src="https://www.googletagmanager.com/gtag/js?id=UA-176319237-1"
-        onLoad={() => {
-          window.dataLayer = window.dataLayer || [];
-          function gtag() {
-            dataLayer.push(arguments);
-          }
-          gtag("js", new Date());
-          gtag("config", "UA-176319237-1");
-        }}
-      />
     </Head>
   );
 };
@@ -84,13 +76,18 @@ export default class MyApp extends App {
       this.setState({ loading: true });
     });
 
-    Router.events.on("routeChangeComplete", () => {
+    Router.events.on("routeChangeComplete", (url) => {
       this.setState({ loading: false });
+      ReactGA.pageview(url)
     });
 
     Router.events.on("routeChangeError", () => {
       this.setState({ loading: false });
     });
+  }
+
+  componentDidMount () {
+      ReactGA.initialize(TrackingId);
   }
 
   render() {
