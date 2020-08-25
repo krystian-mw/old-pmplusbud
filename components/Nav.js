@@ -58,7 +58,7 @@ export default function Nav() {
                     src={LogoURI}
                   />
                 ) : (
-                  <img src={LogoURI} />
+                  <img src={LogoURI} alt="PM+BUD Logo" />
                 )}
               </a>
             </Link>

@@ -1,7 +1,15 @@
+@import "../breakpoint.scss";
+
 #Carousel {
   img {
     width: 100%;
     height: 400px;
     object-fit: cover;
+  }
+
+  @media (max-width: $breakpoint) {
+    li.dot {
+        display: none;
+    }
   }
 }

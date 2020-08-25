@@ -39,6 +39,7 @@ const Slide = ({ src }) => {
         ref={ref}
         src={inView ? `${imageBaseSrc}/f_auto,q_70,w_1024${src}` : null}
         crossOrigin="anonymous"
+        alt={src.replace(/\/|\-|\.webp/g, " ")}
       />
     </>
   );

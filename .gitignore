@@ -39,4 +39,5 @@ yarn.lock
 /public/workbox*
 /public/tmp*
 /public/docs*
+/public/sitemap.xml
 .env.local
