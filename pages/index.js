@@ -67,6 +67,10 @@ export default function Home() {
           <div className={ColClass}>
             {isAmp ? (
               <amp-img
+                width="1024"
+                height="836"
+                alt="Budowlańcy pracują na rusztowani"
+                layout="responsive"
                 src={`${imageBaseSrc}/w_1200/carousel/budowlancy-zakladaja-izolacje-i-maluja.webp`}
               />
             ) : (

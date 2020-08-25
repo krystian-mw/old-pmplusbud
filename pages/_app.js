@@ -1,6 +1,7 @@
 import App from "next/app";
 import Router from "next/router";
 import Head from "next/head";
+import { useAmp } from "next/amp";
 
 import Nav from "../components/Nav";
 import Loader from "../components/Loader";
@@ -11,6 +12,60 @@ import "../styles/bootstrap.scss";
 import "../styles/globals.scss";
 
 import manifest from "../public/manifest.json";
+
+const AppHead = () => {
+  const isAmp = useAmp();
+  return (
+    <Head>
+      <meta charSet="UTF-8" />
+      {isAmp ? null : (
+        <meta
+          name="viewport"
+          content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+        />
+      )}
+      <meta name="application-name" content="PM+BUD" />
+      <meta name="apple-mobile-web-app-capable" content="yes" />
+      <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+      <meta name="apple-mobile-web-app-title" content="PM+BUD" />
+      <meta name="description" content="PM+BUD - Twoi Fachowcy" />
+      <meta name="mobile-web-app-capable" content="yes" />
+      <link
+        rel="apple-touch-icon"
+        sizes="180x180"
+        href="https://res.cloudinary.com/next-pmplusbud/w_180/logo/logo.png"
+      />
+      {manifest.icons.map((icon) => (
+        <link
+          key="src"
+          rel="icon"
+          sizes={icon.sizes}
+          type={icon.type}
+          href={icon.src}
+        />
+      ))}
+
+      <link
+        rel="icon"
+        href="https://res.cloudinary.com/next-pmplusbud/w_16/logo/logo.ico"
+      />
+
+      <link rel="manifest" href="/manifest.json" />
+      <script
+        async
+        src="https://www.googletagmanager.com/gtag/js?id=UA-176319237-1"
+        onLoad={() => {
+          window.dataLayer = window.dataLayer || [];
+          function gtag() {
+            dataLayer.push(arguments);
+          }
+          gtag("js", new Date());
+          gtag("config", "UA-176319237-1");
+        }}
+      />
+    </Head>
+  );
+};
 
 /**
  * Main App Component
@@ -42,56 +97,7 @@ export default class MyApp extends App {
     const { Component, pageProps } = this.props;
     return (
       <>
-        <Head>
-          <meta charSet="UTF-8" />
-          <meta
-            name="viewport"
-            content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
-          />
-          <meta name="application-name" content="PM+BUD" />
-          <meta name="apple-mobile-web-app-capable" content="yes" />
-          <meta
-            name="apple-mobile-web-app-status-bar-style"
-            content="default"
-          />
-          <meta name="apple-mobile-web-app-title" content="PM+BUD" />
-          <meta name="description" content="PM+BUD - Twoi Fachowcy" />
-          <meta name="mobile-web-app-capable" content="yes" />
-          <link
-            rel="apple-touch-icon"
-            sizes="180x180"
-            href="https://res.cloudinary.com/next-pmplusbud/w_180/logo/logo.png"
-          />
-          {manifest.icons.map((icon) => (
-            <link
-              key="src"
-              rel="icon"
-              sizes={icon.sizes}
-              type={icon.type}
-              href={icon.src}
-            />
-          ))}
-
-          <link
-            rel="icon"
-            href="https://res.cloudinary.com/next-pmplusbud/w_16/logo/logo.ico"
-          />
-
-          <link rel="manifest" href="/manifest.json" />
-          <script
-            async
-            src="https://www.googletagmanager.com/gtag/js?id=UA-176319237-1"
-          />
-          <script
-            dangerouslySetInnerHTML={{
-              __html: `
-                window.dataLayer = window.dataLayer || [];
-                function gtag(){dataLayer.push(arguments);}
-                gtag('js', new Date());
-                gtag('config', 'UA-176319237-1');`,
-            }}
-          ></script>
-        </Head>
+        <AppHead />
         <Nav />
         {this.state.loading ? <Loader /> : <Component {...pageProps} />}
         <Footer />

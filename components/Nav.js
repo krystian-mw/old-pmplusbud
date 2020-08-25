@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 
 import Link from "next/link";
 import { useRouter } from "next/router";
+import { useAmp } from "next/amp";
 
 import "../styles/components/Nav.scss";
 
@@ -20,6 +21,9 @@ const Breakpoint = process.env.NEXT_PUBLIC_BREAKPOINT;
 export default function Nav() {
   const [show, setShow] = useState(false);
   const router = useRouter();
+  const isAmp = useAmp();
+  const LogoURI =
+    "https://res.cloudinary.com/next-pmplusbud/w_80/logo/logo.png";
 
   useEffect(() => {
     router.events.on("routeChangeStart", () => {
@@ -45,7 +49,17 @@ export default function Nav() {
           <div className="col logo">
             <Link href="/">
               <a>
-                <img src="https://res.cloudinary.com/next-pmplusbud/w_80/logo/logo.png" />
+                {isAmp ? (
+                  <amp-img
+                    layout="fixed"
+                    width="80"
+                    height="80"
+                    alt="PM+BUD Logo"
+                    src={LogoURI}
+                  />
+                ) : (
+                  <img src={LogoURI} />
+                )}
               </a>
             </Link>
           </div>
