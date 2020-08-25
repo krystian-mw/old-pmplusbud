@@ -77,6 +77,20 @@ export default class MyApp extends App {
           />
 
           <link rel="manifest" href="/manifest.json" />
+          <script
+            async
+            src="https://www.googletagmanager.com/gtag/js?id=UA-176319237-1"
+          />
+          <script
+            dangerouslySetInnerHTML={{
+              __html: `
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){dataLayer.push(arguments);}
+                gtag('js', new Date());
+
+                gtag('config', 'UA-176319237-1');`,
+            }}
+          ></script>
         </Head>
         <Nav />
         {this.state.loading ? <Loader /> : <Component {...pageProps} />}
