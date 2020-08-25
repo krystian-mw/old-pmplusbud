@@ -1,5 +1,6 @@
 import App from "next/app";
 import Router from "next/router";
+import Head from "next/head";
 
 import Nav from "../components/Nav";
 import Loader from "../components/Loader";
@@ -8,6 +9,8 @@ import Footer from "../components/Footer";
 
 import "../styles/bootstrap.scss";
 import "../styles/globals.scss";
+
+import manifest from "../public/manifest.json";
 
 /**
  * Main App Component

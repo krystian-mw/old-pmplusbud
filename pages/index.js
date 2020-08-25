@@ -1,3 +1,5 @@
+import { useAmp } from "next/amp";
+
 import { FaUser, FaExchangeAlt, FaTruck, FaFileContract } from "react-icons/fa";
 
 import Carousel from "../components/Carousel";
@@ -9,6 +11,8 @@ import "../styles/pages/Home.scss";
 
 const ContainerClass = process.env.NEXT_PUBLIC_CONTAINER_CLASS;
 const Breakpoint = process.env.NEXT_PUBLIC_BREAKPOINT;
+
+const imageBaseSrc = process.env.NEXT_PUBLIC_IMAGE_ROOT;
 
 const About = [
   {
@@ -39,6 +43,8 @@ const About = [
  */
 export default function Home() {
   const ColClass = `col-12 col-${Breakpoint}-6`;
+  const isAmp = useAmp();
+
   return (
     <>
       <Seo
@@ -59,7 +65,13 @@ export default function Home() {
             <h2>Twoi Fachowcy</h2>
           </div>
           <div className={ColClass}>
-            <Carousel />
+            {isAmp ? (
+              <amp-img
+                src={`${imageBaseSrc}/w_1200/carousel/budowlancy-zakladaja-izolacje-i-maluja.webp`}
+              />
+            ) : (
+              <Carousel />
+            )}
           </div>
         </div>
         <div className="about">
@@ -74,3 +86,7 @@ export default function Home() {
     </>
   );
 }
+
+export const config = {
+  amp: "hybrid",
+};
