@@ -9,7 +9,7 @@ const Breakpoint = process.env.NEXT_PUBLIC_BREAKPOINT;
 
 /**
  * Home Page Component
- * @component
+ * @component Home
  */
 export default function Home() {
   const ColClass = `col-12 col-${Breakpoint}-6`;

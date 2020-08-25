@@ -20,7 +20,7 @@ const Seo = (props) => (
     {props.children ? props.children : null}
     {props.og ? (
       <>
-        <meta property="og:site_name" content="PM+BUD" />
+        {/* <meta property="og:site_name" content="PM+BUD" /> */}
         <meta property="og:title" content={props.og.title} />
         <meta property="og:type" content={props.og.type} />
         <meta property="og:url" content={props.og.url} />

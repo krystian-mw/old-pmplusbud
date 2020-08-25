@@ -11,7 +11,7 @@ const Fields = {
     required: true,
     element: "input",
     type: "text",
-    autocomplete: "name",
+    autoComplete: "name",
   },
   Email: {
     placeholder: "Adres E-Mail",
@@ -19,7 +19,7 @@ const Fields = {
     required: false,
     element: "input",
     type: "email",
-    autocomplete: "email",
+    autoComplete: "email",
   },
   Phone: {
     placeholder: "Numer telefonu",
@@ -27,7 +27,7 @@ const Fields = {
     required: false,
     element: "input",
     type: "tel",
-    autocomplete: "tel",
+    autoComplete: "tel",
   },
   Message: {
     match: /./,
@@ -35,7 +35,7 @@ const Fields = {
     required: true,
     element: "textarea",
     type: null,
-    autocomplete: null
+    autoComplete: null
   },
 };
 
@@ -194,7 +194,7 @@ export default class Form extends Component {
                   name: field,
                   placeholder: Fields[field].placeholder,
                   type: Fields[field].type,
-                  autocomplete: Fields[field].autocomplete,
+                  autoComplete: Fields[field].autoComplete,
                   onChange: this.updateField,
                   value: this.state[`field${field}`],
                   className: !this.state[`validate${field}`]
