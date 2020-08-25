@@ -19,8 +19,8 @@ const offers = [
   },
 ];
 
-const Card = ({ title, description, image, key, className }) => (
-  <div key={key} className={className}>
+const Card = ({ title, description, image, className }) => (
+  <div className={className}>
     <h2>{title}</h2>
     <div className="card-content">
       <img

@@ -28,6 +28,7 @@ export default function Home() {
       <div id="Home" className="container-fluid">
         <div className="row">
           <div className={`about ${ColClass}`}>
+              <h1>PM+BUD</h1>
             <h2>Twoi Fachowcy</h2>
           </div>
           <div className={`${ColClass}`}>

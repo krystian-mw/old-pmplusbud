@@ -6,16 +6,16 @@ import { useRouter } from "next/router";
 import "../styles/components/Nav.scss";
 
 const Menu = [
-    { text: "Strona Główna", url: "/" },
-    { text: "Oferta", url: "/oferta" },
-    { text: "Sklep", url: "/sklep" },
-    { text: "Blog", url: "/blog" },
-    { text: "Strefa Klienta", url: "/strefa-klienta" },
-    { text: "Kontakt", url: "/kontakt" },
+  { text: "Strona Główna", url: "/" },
+  { text: "Oferta", url: "/oferta" },
+  { text: "Sklep", url: "/sklep" },
+  { text: "Blog", url: "/blog" },
+  { text: "Strefa Klienta", url: "/strefa-klienta" },
+  { text: "Kontakt", url: "/kontakt" },
 ];
 
-const ContainerClass = process.env.NEXT_PUBLIC_CONTAINER_CLASS
-const Breakpoint = process.env.NEXT_PUBLIC_BREAKPOINT
+const ContainerClass = process.env.NEXT_PUBLIC_CONTAINER_CLASS;
+const Breakpoint = process.env.NEXT_PUBLIC_BREAKPOINT;
 
 export default function Nav() {
   const [show, setShow] = useState(false);
@@ -45,11 +45,13 @@ export default function Nav() {
           <div className="col logo">
             <Link href="/">
               <a>
-                <h1>PM+BUD</h1>
+                <img src="https://res.cloudinary.com/next-pmplusbud/w_80/logo/logo.png" />
               </a>
             </Link>
           </div>
-          <div className={`col-12 col-${Breakpoint}-8 menu ${show ? "show" : ""}`}>
+          <div
+            className={`col-12 col-${Breakpoint}-8 menu ${show ? "show" : ""}`}
+          >
             {Menu.map((item) => (
               <Link key={item.text} href={item.url}>
                 <a className={router.pathname === item.url ? "active" : ""}>
