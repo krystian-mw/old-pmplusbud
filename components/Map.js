@@ -1,10 +1,9 @@
-import { useRef, useEffect, useState } from "react";
+import {  useState } from "react";
 import { useInView } from "react-intersection-observer";
 
 import Loader from "./Loader";
 
 export default function Map() {
-  const iframeRef = useRef();
   const [loading, setLoading] = useState(true);
 
   const src =

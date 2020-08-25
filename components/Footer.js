@@ -6,21 +6,17 @@ const ContainerClass = process.env.NEXT_PUBLIC_CONTAINER_CLASS;
 const Breakpoint = process.env.NEXT_PUBLIC_BREAKPOINT;
 
 const Sitemap = [
-  {
-    url: "/",
-    text: "Strona Glowna",
-  },
-  {
-    url: "/polityka-prywatnosci",
-    text: "Polityka Prywatnosci",
-  },
-  {
-    url: "/kontakt",
-    text: "Kontakt",
-  },
+  { url: "/", text: "Strona Główna" },
+  { url: "/polityka-prywatnosci", text: "Polityka Prywatności" },
+  { url: "/kontakt", text: "Kontakt" },
 ];
 
-const Oferta = [{ url: "/oferta/ogrodzenia", text: "Ogrodzenia" }];
+const Oferta = [
+  { url: "/oferta/wznoszenia-budynkow", text: "Wznoszenia Budynków" },
+  { url: "/oferta/wykonczenia", text: "Wykończenia" },
+  { url: "/oferta/ogrodzenia", text: "Ogrodzenia" },
+  { url: "/oferta/remonty", text: "Remonty" },
+];
 
 export default function Footer() {
   const ColClass = `col-12 col-${Breakpoint}-4 footer-col`;
