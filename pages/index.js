@@ -21,8 +21,8 @@ export default function Home() {
         og={{
           title: "PM Plus Bud - Twoi fachowcy",
           type: "website",
-          url: "https://pmplusbud.vercel.app/",
-          image: "/icons/android-chrome-512x512.png",
+          url: "https://pmplusbud.pl/",
+          image: "https://res.cloudinary.com/next-pmplusbud/w_300/logo/logo.png",
         }}
       />
       <div id="Home" className="container-fluid">
