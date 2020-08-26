@@ -62,11 +62,11 @@ const HtmlContent = () => (
     </div>
     <img
       src={`${imageBaseSrc}/w_1200/skaczacy-budowlaniec.webp`}
-      srcSet={`
-      ${imageBaseSrc}/w_400/skaczacy-budowlaniec.webp 400w,
-      ${imageBaseSrc}/w_750/skaczacy-budowlaniec.webp 750w,
-      ${imageBaseSrc}/w_1200/skaczacy-budowlaniec.webp 1200w
-      `}
+    //   srcSet={`
+    //   ${imageBaseSrc}/w_400/skaczacy-budowlaniec.webp 400w,
+    //   ${imageBaseSrc}/w_750/skaczacy-budowlaniec.webp 750w,
+    //   ${imageBaseSrc}/w_1200/skaczacy-budowlaniec.webp 1200w
+    //   `}
       alt="skaczacy budowlaniec"
     />
   </div>
