@@ -61,12 +61,8 @@ const HtmlContent = () => (
       <h2>Twoi Fachowcy</h2>
     </div>
     <img
-      src={`${imageBaseSrc}/w_1200/skaczacy-budowlaniec.webp`}
-    //   srcSet={`
-    //   ${imageBaseSrc}/w_400/skaczacy-budowlaniec.webp 400w,
-    //   ${imageBaseSrc}/w_750/skaczacy-budowlaniec.webp 750w,
-    //   ${imageBaseSrc}/w_1200/skaczacy-budowlaniec.webp 1200w
-    //   `}
+      src={`${imageBaseSrc}/w_1200/skaczacy-budowlaniec.jpg`}
+      crossOrigin="anonymous"
       alt="skaczacy budowlaniec"
     />
   </div>
