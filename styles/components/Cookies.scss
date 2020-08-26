@@ -4,46 +4,28 @@
   position: fixed;
   bottom: 1rem;
   width: calc(100% - 2rem);
-  background: $platinum;
-  color: $oxford-blue;
   padding: 1rem;
   margin: 1rem;
   text-align: center;
+  background: $white;
+  box-shadow: 0px 0px 5px;
 
   p {
     width: 100%;
     margin: 0px;
+    font-size: 1rem;
 
     &:nth-child(2) {
-      font-size: 0.9rem;
+      font-size: calc(1rem / 1.618);
     }
   }
 
   .icon {
-    width: 2rem;
-    height: 2rem;
     display: flex;
-    border-radius: 50%;
-    transition: all 0.5s;
     position: absolute;
     top: 0.5rem;
-    color: $orange-web;
-
-    &.timer {
-      left: 0.5rem;
-    }
-
-    &.close {
-      right: 0.5rem;
-      background: $oxford-blue;
-    }
-
-    p {
-      background: $oxford-blue;
-      border-radius: 50%;
-      width: 1.5rem;
-      height: 1.5rem;
-      margin: auto;
-    }
+    right: 0.5rem;
+    font-size: 2rem;
+    color: $danger;
   }
 }

@@ -2,10 +2,7 @@ import { useAmp } from "next/amp";
 
 import { FaUser, FaExchangeAlt, FaTruck, FaFileContract } from "react-icons/fa";
 
-import Carousel from "../components/Carousel";
 import Seo from "../components/Seo";
-
-import Oferta from "./oferta";
 
 import "../styles/pages/Home.scss";
 
@@ -37,6 +34,42 @@ const About = [
   },
 ];
 
+const AmpContent = () => (
+  <div className="row">
+    <div className={`title ${ColClass}`}>
+      <h1>PM+BUD</h1>
+      <h2>Twoi Fachowcy</h2>
+    </div>
+    <div className={ColClass}>
+      <amp-img
+        width="1024"
+        height="836"
+        alt="Budowlańcy pracują na rusztowani"
+        layout="responsive"
+        src={`${imageBaseSrc}/w_1200/carousel/budowlancy-zakladaja-izolacje-i-maluja.webp`}
+      />
+    </div>
+  </div>
+);
+
+const HtmlContent = () => (
+  <div className="front row">
+    <div class="description">
+      <h1>PM+BUD</h1>
+      <h2>Twoi Fachowcy</h2>
+    </div>
+    <img
+      src={`${imageBaseSrc}/w_1200/skaczacy-budowlaniec.webp`}
+      srcSet={`
+      ${imageBaseSrc}/w_400/skaczacy-budowlaniec.webp 400w,
+      ${imageBaseSrc}/w_750/skaczacy-budowlaniec.webp 750w,
+      ${imageBaseSrc}/w_1200/skaczacy-budowlaniec.webp 1200w
+      `}
+      alt="skaczacy budowlaniec"
+    />
+  </div>
+);
+
 /**
  * Home Page Component
  * @component Home
@@ -59,25 +92,7 @@ export default function Home() {
         }}
       />
       <div id="Home" className="container-fluid">
-        <div className="row">
-          <div className={`title ${ColClass}`}>
-            <h1>PM+BUD</h1>
-            <h2>Twoi Fachowcy</h2>
-          </div>
-          <div className={ColClass}>
-            {isAmp ? (
-              <amp-img
-                width="1024"
-                height="836"
-                alt="Budowlańcy pracują na rusztowani"
-                layout="responsive"
-                src={`${imageBaseSrc}/w_1200/carousel/budowlancy-zakladaja-izolacje-i-maluja.webp`}
-              />
-            ) : (
-              <Carousel />
-            )}
-          </div>
-        </div>
+        {isAmp ? <AmpContent /> : <HtmlContent />}
         <div className="about">
           {About.map((about, index) => (
             <div key={index} className="segment">

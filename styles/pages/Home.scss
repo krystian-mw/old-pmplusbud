@@ -2,25 +2,58 @@
 @import "../breakpoint.scss";
 
 #Home {
-  .title {
-    text-align: center;
-    color: $oxford-blue;
-    margin: auto;
-    h1 {
-      font-size: 5rem;
-      margin: 1rem;
-      margin-bottom: 0rem;
+  .front {
+    @media (max-width: $breakpoint) {
+      .description {
+        width: 100%;
+        text-align: center;
+        h1 {
+          font-size: 3rem;
+        }
+        h2 {
+          font-size: calc(3rem / 1.618);
+        }
+      }
+      img {
+        height: 50vh;
+        object-fit: cover;
+      }
     }
-    h2 {
-      font-size: 3rem;
-      margin: 0.5rem;
-      margin-top: 0rem;
+
+    @media (min-width: $breakpoint) {
+      .description {
+        padding: 2rem;
+        position: absolute;
+        background: white;
+        box-shadow: 0px 0px 10px;
+        top: calc(100% / 1.618 / 1.618);
+        left: calc(100% / 1.618 / 1.618 / 1.618);
+        text-align: center;
+
+        h1 {
+          font-size: 5rem;
+        }
+
+        h2 {
+          font-size: calc(5rem / 1.618);
+        }
+      }
+      img {
+        width: 100%;
+        height: calc(100vh - 104px);
+        object-fit: cover;
+      }
     }
   }
 
   .about {
     display: flex;
     flex-wrap: wrap;
+
+    @media (min-width: $breakpoint) {
+      height: 100vh;
+    }
+    
     .segment {
       margin: 1rem;
       box-shadow: 0px 5px 5px;
@@ -64,18 +97,6 @@
           color: $orange-web;
         }
       }
-    }
-  }
-
-  #Carousel {
-    img {
-      width: 100%;
-      height: 400px;
-      object-fit: cover;
-    }
-
-    @media (min-width: $breakpoint) {
-      padding: 1rem;
     }
   }
 }

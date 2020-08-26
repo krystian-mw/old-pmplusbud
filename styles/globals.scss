@@ -1,4 +1,5 @@
 @import "./colors.scss";
+@import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
 
 html {
     background: $oxford-blue;
@@ -8,6 +9,7 @@ body {
   padding: 0;
   margin: 0;
   background: $platinum;
+  font-family: Montserrat;
 }
 
 a,
