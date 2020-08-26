@@ -71,7 +71,7 @@ const HtmlContent = () => (
     </div>
     <img
       data-aos="flip-left"
-      src={`${imageBaseSrc}/q_70/home-page/building-house-project.webp`}
+      src={`${imageBaseSrc}/q_70/home-page/building-house-project.jpg`}
       crossOrigin="anonymous"
       alt="skaczacy budowlaniec"
     />
