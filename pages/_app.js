@@ -3,7 +3,7 @@ import Router from "next/router";
 import Head from "next/head";
 import { useAmp } from "next/amp";
 
-import ReactGA from 'react-ga';
+import ReactGA from "react-ga";
 
 import Nav from "../components/Nav";
 import Loader from "../components/Loader";
@@ -15,7 +15,7 @@ import "../styles/globals.scss";
 
 import manifest from "../public/manifest.json";
 
-const TrackingId = process.env.NEXT_PUBLIC_GA_TRACKING_ID
+const TrackingId = process.env.NEXT_PUBLIC_GA_TRACKING_ID;
 
 const AppHead = () => {
   const isAmp = useAmp();
@@ -34,6 +34,11 @@ const AppHead = () => {
       <meta name="apple-mobile-web-app-title" content="PM+BUD" />
       <meta name="description" content="PM+BUD - Twoi Fachowcy" />
       <meta name="mobile-web-app-capable" content="yes" />
+      <link
+        rel="preload"
+        href="/Montserrat.woff2"
+        as="font"
+      />
       <link
         rel="apple-touch-icon"
         sizes="180x180"
@@ -78,7 +83,7 @@ export default class MyApp extends App {
 
     Router.events.on("routeChangeComplete", (url) => {
       this.setState({ loading: false });
-      ReactGA.pageview(url)
+      ReactGA.pageview(url);
     });
 
     Router.events.on("routeChangeError", () => {
@@ -86,8 +91,8 @@ export default class MyApp extends App {
     });
   }
 
-  componentDidMount () {
-      ReactGA.initialize(TrackingId);
+  componentDidMount() {
+    ReactGA.initialize(TrackingId);
   }
 
   render() {
