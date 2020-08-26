@@ -14,7 +14,7 @@
     "aos": "^2.3.4",
     "bootstrap": "^4.5.0",
     "formidable": "^1.2.2",
-    "next": "9.5.3",
+    "next": "^9.5.2",
     "next-pwa": "^3.1.1",
     "node-sass": "^4.14.1",
     "prop-types": "^15.7.2",
