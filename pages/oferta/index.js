@@ -1,4 +1,8 @@
+import Link from "next/link";
+
 import { Component } from "react";
+
+import { FaChevronCircleRight } from "react-icons/fa";
 
 import Seo from "../../components/Seo";
 
@@ -13,28 +17,50 @@ const offers = [
   {
     title: `Wznoszenia Bydunków`,
     description: `Wzeniesemy domy hale itd`,
-    image: `/oferta/stolarz-mierzy-deske`,
+    image: `/oferta/budowa-domu`,
     alt: `stolarz mierzy deske na budowie`,
+    link: `/oferta/wznoszenia-budynkow`,
   },
   {
     title: `Prace Wykończeniowe`,
     description: ``,
-    image: `/oferta/plan-domu-3d`,
+    image: `/oferta/pexels-pixabay-159045_vllx30`,
     alt: `zarys domu w 3d do zbudowania przez firme budowlana`,
+    link: `/oferta/wykonczenia`,
+  },
+  {
+    title: `Remonty`,
+    description: ``,
+    image: `/oferta/pexels-rene-asmussen-3990359_c6jqrb`,
+    alt: `zarys domu w 3d do zbudowania przez firme budowlana`,
+    link: `/oferta/remonty`,
+  },
+  {
+    title: `Ogrodzenia`,
+    description: ``,
+    image: `/carousel/pracownik-zaklada-metalowe-ogrodzenie`,
+    alt: `zarys domu w 3d do zbudowania przez firme budowlana`,
+    link: `/oferta/ogrodzenia`,
   },
 ];
 
-const Card = ({ title, description, image, alt, className }) => (
-  <div className={className}>
-    <h2>{title}</h2>
-    <div className="card-content">
-      <img
-        src={`${ImageRoot}/ar_1.77,c_fill,g_auto,f_auto,q_70,w_200${image}.webp`}
-        alt={alt}
-      />
-      <p>{description}</p>
+const Card = ({ title, description, image, alt, link, className }) => (
+  <Link href={link}>
+    <div className={className}>
+      <div className="card-content">
+        <h2>{title}</h2>
+        <img
+          // src={`${ImageRoot}/ar_1.77,c_fill,g_auto,f_auto,q_70,w_200${image}.webp`}
+          src={`${ImageRoot}/ar_1.618,c_fill,g_auto,f_auto,q_70,w_500${image}.webp`}
+          alt={alt}
+        />
+        <div className="next">
+          <a>Dowiedz się więcej</a>
+          <FaChevronCircleRight />
+        </div>
+      </div>
     </div>
-  </div>
+  </Link>
 );
 
 export default function Oferta() {
@@ -57,7 +83,10 @@ export default function Oferta() {
       />
       <div id="Oferta" className={ContainerClass}>
         <h1>Oferta</h1>
-        <div className="row">
+        <div className="description">
+          <p>Oferujemy usługi na całym Województwie Małopolskim.</p>
+        </div>
+        <div className="offers row">
           {offers.map((offer) => (
             <Card
               className={`card ${ColClass}`}
@@ -66,6 +95,7 @@ export default function Oferta() {
               description={offer.description}
               image={offer.image}
               alt={offer.alt}
+              link={offer.link}
             />
           ))}
         </div>

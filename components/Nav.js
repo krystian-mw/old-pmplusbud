@@ -9,7 +9,7 @@ import "../styles/components/Nav.scss";
 const Menu = [
   { text: "Strona Główna", url: "/" },
   { text: "Oferta", url: "/oferta" },
-  { text: "Sklep", url: "/sklep" },
+//   { text: "Sklep", url: "/sklep" },
   { text: "Blog", url: "/blog" },
   { text: "Strefa Klienta", url: "/strefa-klienta" },
   { text: "Kontakt", url: "/kontakt" },

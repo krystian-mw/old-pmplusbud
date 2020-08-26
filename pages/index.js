@@ -56,7 +56,7 @@ const AmpContent = () => (
 
 const HtmlContent = () => (
   <div className="front row">
-    <div class="description">
+    <div className="description">
       <h1>PM+BUD</h1>
       <h2>Twoi Fachowcy</h2>
     </div>
