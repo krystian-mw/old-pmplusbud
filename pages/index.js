@@ -13,6 +13,8 @@ const imageBaseSrc = process.env.NEXT_PUBLIC_IMAGE_ROOT;
 
 const ColClass = `col-12 col-${Breakpoint}-6`;
 
+const isEven = (n) => n % 2 == 0;
+
 const About = [
   {
     icon: <FaUser />,
@@ -36,6 +38,13 @@ const About = [
   },
 ];
 
+const Presentation = [
+  {
+    image: `/carousel/murarz-muruje-pustakami-ceramicznymi`,
+    headline: `Wznoszenia Budynków`,
+  },
+];
+
 const AmpContent = () => (
   <div className="row">
     <div className={`title ${ColClass}`}>
@@ -56,12 +65,13 @@ const AmpContent = () => (
 
 const HtmlContent = () => (
   <div className="front row">
-    <div className="description">
+    <div data-aos="flip-right" className="description">
       <h1>PM+BUD</h1>
       <h2>Twoi Fachowcy</h2>
     </div>
     <img
-      src={`${imageBaseSrc}/w_1200/skaczacy-budowlaniec.jpg`}
+      data-aos="flip-left"
+      src={`${imageBaseSrc}/q_70/home-page/building-house-project.webp`}
       crossOrigin="anonymous"
       alt="skaczacy budowlaniec"
     />
@@ -88,15 +98,30 @@ export default function Home() {
             "https://res.cloudinary.com/next-pmplusbud/w_300/logo/logo.png",
         }}
       />
-      <div id="Home" className="container-fluid">
+      <div id="Home" className={ContainerClass}>
         {isAmp ? <AmpContent /> : <HtmlContent />}
         <div className="about">
           {About.map((about, index) => (
-            <div key={index} className="segment">
+            <div
+              data-aos={isEven(index) ? "fade-right" : "fade-left"}
+              key={index}
+              className="segment"
+            >
               <div className="icon">{about.icon}</div>
               <div className="content">{about.text}</div>
             </div>
           ))}
+        </div>
+
+        <div className="presentation">
+          {/* {Presentation.map((slide, index) => (
+            <div className="slide" key={index}>
+              <img
+                data-aos="flip-right"
+                src={`${imageBaseSrc}${slide.image}`}
+              />
+            </div>
+          ))} */}
         </div>
       </div>
     </>

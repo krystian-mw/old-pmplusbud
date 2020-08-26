@@ -2,7 +2,7 @@ import Link from "next/link";
 
 import { Component } from "react";
 
-import { FaChevronCircleRight } from "react-icons/fa";
+import { FaChevronCircleRight, FaFileContract } from "react-icons/fa";
 
 import Seo from "../../components/Seo";
 
@@ -46,11 +46,10 @@ const offers = [
 
 const Card = ({ title, description, image, alt, link, className }) => (
   <Link href={link}>
-    <div className={className}>
+    <div data-aos="zoom-in" className={className}>
       <div className="card-content">
         <h2>{title}</h2>
         <img
-          // src={`${ImageRoot}/ar_1.77,c_fill,g_auto,f_auto,q_70,w_200${image}.webp`}
           src={`${ImageRoot}/ar_1.618,c_fill,g_auto,f_auto,q_70,w_500${image}.webp`}
           alt={alt}
         />

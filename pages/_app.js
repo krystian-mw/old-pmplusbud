@@ -10,6 +10,9 @@ import Loader from "../components/Loader";
 import Cookies from "../components/Cookies";
 import Footer from "../components/Footer";
 
+import AOS from "aos";
+import "aos/dist/aos.css";
+
 import "../styles/bootstrap.scss";
 import "../styles/globals.scss";
 
@@ -38,6 +41,7 @@ const AppHead = () => {
         rel="preload"
         href="/Montserrat.woff2"
         as="font"
+        crossOrigin="anonymous"
       />
       <link
         rel="apple-touch-icon"
@@ -93,6 +97,7 @@ export default class MyApp extends App {
 
   componentDidMount() {
     ReactGA.initialize(TrackingId);
+    AOS.init({ duration: 1250 });
   }
 
   render() {
