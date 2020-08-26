@@ -11,6 +11,8 @@ const Breakpoint = process.env.NEXT_PUBLIC_BREAKPOINT;
 
 const imageBaseSrc = process.env.NEXT_PUBLIC_IMAGE_ROOT;
 
+const ColClass = `col-12 col-${Breakpoint}-6`;
+
 const About = [
   {
     icon: <FaUser />,
@@ -75,7 +77,6 @@ const HtmlContent = () => (
  * @component Home
  */
 export default function Home() {
-  const ColClass = `col-12 col-${Breakpoint}-6`;
   const isAmp = useAmp();
 
   return (
