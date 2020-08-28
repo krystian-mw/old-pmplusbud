@@ -5,6 +5,7 @@ import { Fragment } from "react";
 import "../styles/components/Breadcrumb.scss";
 
 export default function BC({ path }) {
+    return null
   return (
     <span id="Breadcrumb">
       {path.map((child, index) => (
