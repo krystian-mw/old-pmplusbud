@@ -64,9 +64,13 @@ export default function Nav() {
           <div
             className={`col-12 col-${Breakpoint}-8 menu ${show ? "show" : ""}`}
           >
-            {Menu.map((item) => (
+            {Menu.map((item, index) => (
               <Link key={item.text} href={item.url}>
-                <a className={router.pathname === item.url ? "active" : ""}>
+                <a
+                  data-aos="fade-right"
+                  data-aos-delay={500 + (250 * index)}
+                  className={router.pathname === item.url ? "active" : ""}
+                >
                   {item.text}
                 </a>
               </Link>

@@ -4,12 +4,19 @@
 #PodOferta {
   text-align: center;
 
-  .title {
-    padding: 1.618rem;
-  }
-
   .center {
     margin: auto;
+  }
+  .title {
+    @media (max-width: $breakpoint) {
+      position: absolute;
+      z-index: 1;
+      top: 104px;
+      width: 100%;
+      padding: 2rem;
+      background: $orange-web;
+      color: $oxford-blue;
+    }
   }
 
   @media (min-width: $breakpoint) {
@@ -24,9 +31,9 @@
   }
 
   ul {
-      text-align: left;
+    text-align: left;
     list-style-type: none;
-    
+
     li:before {
       content: "✔️  ";
     }

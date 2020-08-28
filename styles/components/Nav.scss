@@ -3,7 +3,9 @@
 
 #Nav {
   background: $oxford-blue;
-  position: relative;
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
   z-index: 50;
   white-space: nowrap;
 
