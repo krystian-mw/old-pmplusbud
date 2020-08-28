@@ -1,4 +1,5 @@
 @import "../colors.scss";
+@import "../breakpoint.scss";
 
 #PodOferta {
   text-align: center;
@@ -9,6 +10,12 @@
 
   .center {
     margin: auto;
+  }
+
+  @media (min-width: $breakpoint) {
+    .desktop-reverse {
+      flex-direction: row-reverse;
+    }
   }
 
   img {

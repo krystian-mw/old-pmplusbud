@@ -38,7 +38,7 @@ export default function PodOferta() {
         </div>
       </div>
 
-      <div className="row">
+      <div className="row desktop-reverse">
         <div className={ColClass}>
           <img src={`${imageBaseSrc}/q_70/carousel/murarz-muruje-pustakami-ceramicznymi.jpg`} />
         </div>
@@ -50,6 +50,7 @@ export default function PodOferta() {
             <li>Lokatę zaliczki ujemnej od kosztów materiałów</li>
             <li>Ubezpieczenie</li>
             <li>Gwarancję</li>
+            <li>Fachowe Porady</li>
           </ul>
         </div>
       </div>

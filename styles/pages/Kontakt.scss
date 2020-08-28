@@ -6,9 +6,35 @@
     text-align: center;
   }
 
+  h3,
+  h4 {
+    text-align: center;
+  }
+
   .map {
-      h1 {
-          margin: 2rem auto;
+    h1 {
+      margin: 2rem auto;
+    }
+  }
+
+  .reviews {
+    .review {
+        width: 100%;
+      background: white;
+      padding: 1rem;
+
+        p {
+            margin: 0rem;
+        }
+
+      .author {
+          text-align: right;
       }
+    }
+
+  }
+
+  .and-you {
+      margin: 1.618rem;
   }
 }
