@@ -7,6 +7,7 @@ const Breakpoint = process.env.NEXT_PUBLIC_BREAKPOINT;
 
 const Sitemap = [
   { url: "/", text: "Strona Główna" },
+//   { text: "Strefa Klienta", url: "/strefa-klienta" },
   { url: "/polityka-prywatnosci", text: "Polityka Prywatności" },
   { url: "/kontakt", text: "Kontakt" },
 ];
@@ -14,8 +15,8 @@ const Sitemap = [
 const Oferta = [
   { url: "/oferta/wznoszenia-budynkow", text: "Wznoszenia Budynków" },
   { url: "/oferta/wykonczenia", text: "Wykończenia" },
-  { url: "/oferta/ogrodzenia", text: "Ogrodzenia" },
   { url: "/oferta/remonty", text: "Remonty" },
+  { url: "/oferta/ogrodzenia", text: "Ogrodzenia" },
 ];
 
 export default function Footer() {
@@ -34,7 +35,9 @@ export default function Footer() {
             ))}
           </div>
           <div className={ColClass}>
-            <h4>Oferty</h4>
+            <Link href="/oferta">
+              <h4>Oferta</h4>
+            </Link>
             {Oferta.map((page) => (
               <Link key={page.url} href={page.url}>
                 <a>{page.text}</a>

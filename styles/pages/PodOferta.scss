@@ -1,5 +1,22 @@
-@import '../colors.scss';
+@import "../colors.scss";
 
 #PodOferta {
-    text-align: center;
+  text-align: center;
+
+  .title {
+    padding: 1.618rem;
+  }
+
+  .center {
+    margin: auto;
+  }
+
+  img {
+    width: 100%;
+    padding: 1.618rem;
+  }
+
+  ul {
+    text-align: left;
+  }
 }
