@@ -33,9 +33,16 @@ const QcList = [
 export default function QC() {
   return (
     <div id="QuickContact" className="contact">
-      {QcList.map((qc) => (
-        <a href={qc.link} className={qc.className}>
-          <span class="content">
+      {QcList.map((qc, index) => (
+        <a
+          key={index}
+          data-aos="flip-left"
+          data-aos-delay={250 * index}
+          data-aos-once="true"
+          href={qc.link}
+          className={qc.className}
+        >
+          <span className="content">
             {qc.icon}
             {qc.text}
           </span>

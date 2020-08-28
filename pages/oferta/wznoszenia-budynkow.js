@@ -1,3 +1,5 @@
+import { FaUserCheck } from "react-icons/fa";
+
 import Breadcrumb from "../../components/Breadcrumb";
 import QuickContact from "../../components/QuickContact";
 import Seo from "../../components/Seo";
@@ -21,16 +23,19 @@ export default function PodOferta() {
           { href: "/oferta/wznoszenia-bydunkow", text: "Wznoszenia Budynków" },
         ]}
       />
-      <div className="title">
+      <div className="title" data-aos="flip-down">
         <h1>Wznoszenia Budynków</h1>
       </div>
 
       <div className="row">
         <div className={ColClass}>
-          <img src={`${imageBaseSrc}/oferta/budowa-domu.jpg`} />
+          <img
+            data-aos="fade-up"
+            src={`${imageBaseSrc}/oferta/budowa-domu.jpg`}
+          />
         </div>
         <div className={ColClass}>
-          <p>
+          <p  data-aos="fade-right">
             Firma Budowlana PM+BUD zajmuje się budową różnego rodzaju budynków,
             w tym budynki mieszkalne oraz inne obiekty publiczne.
           </p>
@@ -40,14 +45,19 @@ export default function PodOferta() {
 
       <div className="row desktop-reverse">
         <div className={ColClass}>
-          <img src={`${imageBaseSrc}/q_70/carousel/murarz-muruje-pustakami-ceramicznymi.jpg`} />
+          <img
+            data-aos="fade-up"
+            src={
+              `${imageBaseSrc}/q_70/carousel/` +
+              `murarz-muruje-pustakami-ceramicznymi.jpg`
+            }
+          />
         </div>
         <div className={ColClass}>
-          <h6>Gwarantujemy:</h6>
+          <h6>Zapewniamy:</h6>
           <ul>
+            <li>Wysoką jakość wykonania</li>
             <li>Wysoką jakość materiałów</li>
-            <li>Wysoką jakość wykończenia</li>
-            <li>Lokatę zaliczki ujemnej od kosztów materiałów</li>
             <li>Ubezpieczenie</li>
             <li>Gwarancję</li>
             <li>Fachowe Porady</li>

@@ -86,6 +86,7 @@ export default class MyApp extends App {
     });
 
     Router.events.on("routeChangeComplete", (url) => {
+      AOS.refresh();
       this.setState({ loading: false });
       ReactGA.pageview(url);
     });
